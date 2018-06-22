@@ -1,6 +1,8 @@
-package brunel.mormur.models;
+package brunel.mormur;
 
 import lombok.Data;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +21,8 @@ public class User {
 
     public User(String firstName, String lastName, String shortBio) {
         this.firstName = firstName;
-        this.lastName = lastName    ;
+        this.lastName = lastName;
         this.shortBio = shortBio;
     }
+
 }
