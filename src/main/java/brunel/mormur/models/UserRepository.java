@@ -1,4 +1,4 @@
-package models;
+package brunel.mormur.models;
 
 import org.springframework.data.repository.CrudRepository;
 
