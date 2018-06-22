@@ -1,4 +1,4 @@
-package brunel.mormur.models;
+package brunel.mormur;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
