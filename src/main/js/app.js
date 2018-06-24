@@ -2,18 +2,21 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
 
+const follow = require('./follow');
+
+const root = '/api';
+
+
 class App extends React.Component {
 
 
     constructor(props) {
         super(props);
-        this.state = {users: []};
-    }
-
-    componentDidMount() {
-        client({method: 'GET', path: '/api/'}).done(response => {
-            this.loadFromServer(this.state.pageSize);
-        });
+        this.state = {users: [], attributes: [], pageSize: 2, links: {}};
+        this.updatePageSize = this.updatePageSize.bind(this);
+        this.onCreate = this.onCreate.bind(this);
+        this.onDelete = this.onDelete.bind(this);
+        this.onNavigate = this.onNavigate.bind(this);
     }
 
     loadFromServer(pageSize) {
@@ -36,14 +39,9 @@ class App extends React.Component {
                 links: userCollection.entity._links});
         });
     }
-    render() {
-        return (
-            <UserList users ={this.state.users}/>
-        );
-    }
 
     onCreate(newUser) {
-        follow(client, root, ['users']).then(employeeCollection => {
+        follow(client, root, ['users']).then(userCollection => {
             return client({
                 method: 'POST',
                 path: userCollection.entity._links.self.href,
@@ -62,6 +60,13 @@ class App extends React.Component {
         });
     }
 
+    onDelete(user) {
+        client({method: 'DELETE', path: user._links.self.href}).done(response => {
+            this.loadFromServer(this.state.pageSize)
+        });
+
+    }
+
     onNavigate(navUri) {
         client({method: 'GET', path: navUri}).done(userCollection => {
             this.setState({
@@ -72,25 +77,101 @@ class App extends React.Component {
             })
         });
     }
-    onDelete(user) {
-        client({method: 'DELETE', path: employee._links.self.href}).done(response => {
-            this.loadFromServer(this.state.pageSize)
+
+    updatePageSize(pageSize) {
+        if (pageSize != this.updatePageSize()) {
+            this.loadFromServer(pageSize);
+        }
+    }
+
+    componentDidMount() {
+        client({method: 'GET', path: '/api/'}).done(response => {
+            this.loadFromServer(this.state.pageSize);
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <CreateDialog attributes={this.state.attributes} onCreate={this.onCreate}/>
+                <UserList users={this.state.users}
+                              links={this.state.links}
+                              pageSize={this.state.pageSize}
+                              onNavigate={this.onNavigate}
+                              onDelete={this.onDelete}
+                              updatePageSize={this.updatePageSize}/>
+            </div>
+        )
+    }
+}
+
+class CreateDialog extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleSubmit(e) {
+        e.preventDefault();
+        let newUser = {};
+        this.props.attributes.forEach(attribute => {
+            newUser[attribute] = ReactDOM.findDOMNode(this.refs[attribute]).value.trim();
+        });
+        this.props.onCreate(newUser);
+
+        this.props.attributes.forEach(attribute => {
+            ReactDOM.findDOMNode(this.refs[attribute]).value = '';
         });
 
+        window.location = "#";
     }
-        handleInput(e) {
-            e.preventDefault();
-            var pageSize = ReactDOM.findDOMNode(this.refs.pageSize).value;
-            if(/^[0-9]+$/.test(pageSize)) {
-                this.props.updatePageSize(pageSize);
-            } else {
-                ReactDOM.findDOMNode(this.ref.pageSize).value = pageSize.substring(0, pageSize.length -1);
-            }
-        }
 
+    render() {
+        let inputs = this.props.attributes.map(attribute =>
+            <p key={attribute}>
+                <input type="text" placeholder={attribute} ref={attribute} className="field"/>
+            </p>
+        );
+
+        return (
+            <div>
+                <a href="#createUser">Create</a>
+
+                <div id="createUser" className="modalDialog">
+                    <div>
+                        <a href="#" title="Close" className="close">X</a>
+                        <h2>Create new user</h2>
+                        <form>
+                            {inputs}
+                            <button onClick={this.handleSubmit}>Create</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }
 
 class UserList extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.handleNavFirst = this.handleNavFirst.bind(this);
+        this.handleNavPrev = this.handleNavPrev.bind(this);
+        this.handleNavNext = this.handleNavNext.bind(this);
+        this.handleNavLast = this.handleNavLast.bind(this);
+        this.handleInput = this.handleInput.bind(this);
+    }
+
+    handleInput(e) {
+        e.preventDefault();
+        let pageSize = ReactDOM.findDOMNode(this.refs.pageSize).value;
+        if(/^[0-9]+$/.test(pageSize)) {
+            this.props.updatePageSize(pageSize);
+        } else {
+            ReactDOM.findDOMNode(this.ref.pageSize).value = pageSize.substring(0, pageSize.length -1);
+        }
+    }
     handleNavFirst(e) {
         e.preventDefault();
         this.props.onNavigate(this.props.links.first.href);
@@ -107,36 +188,37 @@ class UserList extends React.Component {
         e.preventDefault();
         this.props.onNavigate(this.props.links.last.href);
     }
+
     render() {
         let users = this.props.users.map(user =>
-            <User key={user._links.self.href} user={user}/>
+            <User key={user._links.self.href} user={user} onDelete={this.props.onDelete()}/>
         );
         let navLinks = [];
-         if("first" in this.props.links) {
-             navLinks.push(<button key="first" onClick={this.handleNavFirst}> &lt;&lt;</button>);
-         }
-         if("prev" in this.props.links) {
-             navLinks.push(<button key="prev" onClick={this.handleNavPrev}>&lt; </button>);
-         }
-         if("next" in this.props.links) {
-             navLinks.push(<button key="next" onClick ={this.handleNavNext}> &gt; </button>);
-         }
-         if("last" in this.props.links) {
-             navLinks.push(<button key="last" onClick={this.handleNavLast}> &gt;&gt; </button>);
-         }
+        if("first" in this.props.links) {
+            navLinks.push(<button key="first" onClick={this.handleNavFirst}> &lt;&lt;</button>);
+        }
+        if("prev" in this.props.links) {
+            navLinks.push(<button key="prev" onClick={this.handleNavPrev}>&lt; </button>);
+        }
+        if("next" in this.props.links) {
+            navLinks.push(<button key="next" onClick ={this.handleNavNext}> &gt; </button>);
+        }
+        if("last" in this.props.links) {
+            navLinks.push(<button key="last" onClick={this.handleNavLast}> &gt;&gt; </button>);
+        }
 
         return (
             <div>
-                <input refs="pageSize" defaultValue={this.props.pageSize} onInput={this.handleInput}/>
+                <input ref="pageSize" defaultValue={this.props.pageSize} onInput={this.handleInput}/>
                 <table>
                     <tbody>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th></th>
-                        </tr>
-                        {users}
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th></th>
+                    </tr>
+                    {users}
                     </tbody>
                 </table>
                 <div>
@@ -149,7 +231,7 @@ class UserList extends React.Component {
 
 class User extends React.Component{
     constructor(props) {
-        super(props)
+        super(props);
             this.handleDelete = this.handleDelete.bind(this);
     }
     handleDelete() {
@@ -166,51 +248,6 @@ class User extends React.Component{
                 </td>
             </tr>
         );
-    }
-}
-
-class CreateDialog extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-    handleSubmit(e) {
-        e.preventDefault();
-        var newUser = {};
-        this.props.attributes.forEach(attribute => {
-            newUser[attribute] = ReactDOM.findDOMNode(this.refs[attribute]).value.trim();
-        });
-        this.props.onCreate(newUser);
-
-        this.props.attributes.forEach(attribute => {
-            ReactDOM.findDOMNode(this.refs[attribute]).value = '';
-        });
-
-        window.location = "#";
-    }
-
-    render() {
-        var inputs = this.props.attributes.map(attribute =>
-        <p key={attribute}>
-                <input type="text" placeholder={attribute} ref={attribute} className="field"/>
-        </p>
-        );
-        return (
-            <div>
-                <a href="#createUser">Create</a>
-
-                <div id="createUser" className="modalDialog">
-                    <div>
-                        <a href="#" title="Close" className="close">X</a>
-                        <h2>Create new user</h2>
-                        <form>
-                            {inputs}
-                            <button onClick={this.handleSubmit}>Create</button>
-                            </form>
-                    </div>
-                </div>
-            </div>
-        )
     }
 }
 ReactDOM.render(
