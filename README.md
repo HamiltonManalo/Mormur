@@ -14,6 +14,11 @@ The server is run on a Spring.io boot platform that brings in a good number of p
 
 ### FRONTEND 
 The front end is run on React/ReactDOM. React allows you to create elegant SPA's (Single Page Applications) and uses *jsx*. *jsx* is a markup language combining JavaScript and HTML. Typically developers lean towards a separation of concerns, i.e. your JS goes in a file and your html goes in a file; however with React you can combine both the logic and the design for a web page in the same file which can make it easier to follow and design. 
+#### Topics to know
+* Promises - Async programming in JS
+  * These are used in JS to handle network requests
+* ReactJS
+
 
 ### BUILD PROCESS
 Currently the project is built through the *Maven* build tool. What does a build tool do? 
