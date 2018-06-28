@@ -15,8 +15,8 @@ public class User {
 
     @Id
 //    @Column(name = "id")
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     @Column(name = "firstName")
     private String firstName;
     @Column(name = "lastName")
@@ -24,15 +24,21 @@ public class User {
     @Column(name = "email")
     private String emailAddress;
 
-    @Column(name = "version")
+//    @Column(name = "version")
     private @Version @JsonIgnore Long version;
 
     private User() {}
 
-    public User(String firstName, String lastName, String email) {
+    public User(String firstName, String lastName, String emailAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
+    }
+    public User(String firstName, String lastName, String emailAddress, long version) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.emailAddress = emailAddress;
+        this.version = version;
     }
 
 }
