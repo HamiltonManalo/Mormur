@@ -24,3 +24,6 @@
 /nbdist/
 /.nb-gradle/
 /node_modules/
+drivers/
+src/main/resources/static/built/
+.mvn/
