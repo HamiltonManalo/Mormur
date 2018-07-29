@@ -139,9 +139,36 @@ class App extends React.Component {
         });
     }
 
+
     render() {
+        var pageText = "Mormur"
+        var textStyle = {
+            fontSize: 35,
+            marginTop: 20,
+            marginLeft: 40,
+            marginBottom: 5,
+            fontFamily: 'Lato',
+            color: 'white',
+            alignSelf: 'left'
+        }
+        var headerBarStyle = {
+            height: 60,
+            width: "100%",
+            backgroundColor: "#A0C8A0",
+            position: 'top',
+            top: 0,
+            zIndex: -1
+        }
         return (
+
+
             <div>
+            <div>
+                <div style={headerBarStyle}>
+                    <div style={textStyle}>{pageText}</div>
+                </div>
+
+            </div>
                 <CreateDialog attributes={this.state.attributes} onCreate={this.onCreate}/>
                 <UserList users={this.state.users}
                               links={this.state.links}
