@@ -9,7 +9,7 @@ A educational platform to connect experts to learners
 # Dev Guide
 *Credentials for logging into our database are stored in the files. Please treat this as a vulnerability until its changed*
 
-##Source Control
+## Source Control
 Your parents have probably never spoken to you about the vital need to practice strong source control. Your friends may say "**MERGE TO MAIN** man, its cool"
 Please don't. Whenever you begin work on a new feature or patch, start a new branch. In order to have great source control you need to learn to use git. Or you can download a handly git application that will let you do a ton, without having to touch the terminal. [Please check out](https://www.sourcetreeapp.com) 
 Its my git application of choice and it makes managing your source significantly easier. 
