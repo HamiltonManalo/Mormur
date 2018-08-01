@@ -1,0 +1,30 @@
+.button {
+  @include transition(all);
+  display: inline-block;
+  border: 2px solid $colour-button;
+  padding: 12px 22px;
+  font-family: $font-family-nav;
+  font-size: 12px;
+  letter-spacing: 2px;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  color: $colour-button;
+  background-color: transparent;
+
+  &:hover {
+    border-color: $colour-button;
+    color: $colour-white;
+    background-color: $colour-button;
+    text-decoration: none;
+  }
+}
+
+.button-large {
+  padding: 16px 32px;
+  font-size: 14px;
+}

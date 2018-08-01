@@ -1,0 +1,19 @@
+.home-1 {
+	height: 450px; // TESTING ONLY
+}
+
+.home-2 {
+	height: 250px; // TESTING ONLY
+	border-top: 1px solid rgba(0,0,0,0.06);
+	background: lighten( $colour-primary, 75% );
+}
+
+.home-3 {
+	height: 450px; // TESTING ONLY
+	background: #605ea1;
+  background-image: -webkit-radial-gradient(circle farthest-corner at right bottom, lighten( $colour-primary, 24% ) 0%, lighten( $colour-primary, 16% ) 28%, lighten( $colour-primary, 8% ) 57%, $colour-primary 100%);
+  background-image: -moz-radial-gradient(circle farthest-corner at right bottom, lighten( $colour-primary, 24% ) 0%, lighten( $colour-primary, 16% ) 28%, lighten( $colour-primary, 8% ) 57%, $colour-primary 100%);
+  background-image: -o-radial-gradient(circle farthest-corner at right bottom, lighten( $colour-primary, 24% ) 0%, lighten( $colour-primary, 16% ) 28%, lighten( $colour-primary, 8% ) 57%, $colour-primary 100%);
+  background-image: -ms-radial-gradient(circle farthest-corner at right bottom, lighten( $colour-primary, 24% ) 0%, lighten( $colour-primary, 16% ) 28%, lighten( $colour-primary, 8% ) 57%, $colour-primary 100%);
+  background-image: radial-gradient(circle farthest-corner at right bottom, lighten( $colour-primary, 24% ) 0%, lighten( $colour-primary, 16% ) 28%, lighten( $colour-primary, 8% ) 57%, $colour-primary 100%);
+}
