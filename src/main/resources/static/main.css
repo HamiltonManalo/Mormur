@@ -20,7 +20,10 @@ td, th {
     padding: 0.5rem;
     text-align: left;
 }
-
+body {
+    margin: 0;
+    padding: 0;
+}
 /*Classes for creating dialogs*/
 
 .modalDialog {

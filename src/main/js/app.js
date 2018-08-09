@@ -1,10 +1,12 @@
 'use strict';
+import when from 'when';
+
 const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
-const when = require('when');
 const follow = require('./follow');
-
+import UpdateDialog from './components/updateComponent' // ES6 style imports which will be
+import CreateDialog from './components/createComponent'// the standard we use moving forward in the project
 const root = '/api';
 
 
@@ -183,98 +185,8 @@ class App extends React.Component {
     }
 }
 
-class CreateDialog extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-    handleSubmit(e) {
-        e.preventDefault();
-        let newUser = {};
-        this.props.attributes.forEach(attribute => {
-            newUser[attribute] = ReactDOM.findDOMNode(this.refs[attribute]).value.trim();
-        });
-        this.props.onCreate(newUser);
-        this.props.attributes.forEach(attribute => {
-            ReactDOM.findDOMNode(this.refs[attribute]).value = '';
-        });
-        window.location = "#";
-    }
 
-    render() {
-        // if(this.props.attributes)
-        let inputs = this.props.attributes.map(attribute =>
-            <p key={attribute}>
-                <input type="text" placeholder={attribute} ref={attribute} className="field"/>
-            </p>
-        );
-
-        return (
-            <div>
-                <a href="#createUser">Create</a>
-
-                <div id="createUser" className="modalDialog">
-                    <div>
-                        <a href="#" title="Close" className="close">X</a>
-                        <h2>Create new user</h2>
-                        <form>
-                            {inputs}
-                            <button onClick={this.handleSubmit}>Create</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        )
-    }
-}
-
-class UpdateDialog extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-        let updatedUser = {};
-        this.props.attributes.forEach(attribute => {
-            updatedUser[attribute] = ReactDOM.findDOMNode(this.refs[attribute]).value.trim();
-        });
-        this.props.onUpdate(this.props.user, updatedUser);
-        window.location = "#";
-    }
-
-    render() {
-        let inputs = this.props.attributes.map(attribute =>
-        <p key={attribute}>
-            <input type="text"placeholder={attribute} defaultValue={this.props.user.entity[attribute]}
-                   ref={attribute} className="field"/>
-        </p>
-
-        );
-
-        let dialogId = "updateUser-" + this.props.user.entity._links.self.href;
-
-        return (
-            <div key={this.props.user.entity._links.self.href}>
-                <a href={"#" + dialogId}>Update</a>
-                <div id={dialogId} className="modalDialog">
-                    <div>
-                        <a href="#" title="Close" className="close">X</a>
-
-                        <h2>Update User</h2>
-
-                        <form>
-                            {inputs}
-                            <button onClick={this.handleSubmit}>Update</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        )
-    }
-}
 
 class UserList extends React.Component {
 
