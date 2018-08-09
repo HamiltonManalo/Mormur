@@ -5,7 +5,8 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
 const follow = require('./follow');
-import UpdateDialog from './components/updateComponent' // ES6 style imports which will be
+import UserList from './components/userListComponent' // ES6 style imports which will be
+
 import CreateDialog from './components/createComponent'// the standard we use moving forward in the project
 const root = '/api';
 
@@ -143,31 +144,15 @@ class App extends React.Component {
 
 
     render() {
-        var pageText = "Mormur"
-        var textStyle = {
-            fontSize: 35,
-            marginTop: 20,
-            marginLeft: 40,
-            marginBottom: 5,
-            fontFamily: 'Lato',
-            color: 'white',
-            alignSelf: 'left'
-        }
-        var headerBarStyle = {
-            height: 60,
-            width: "100%",
-            backgroundColor: "#A0C8A0",
-            position: 'top',
-            top: 0,
-            zIndex: -1
-        }
+        let pageText = "Mormur";
+
         return (
 
 
             <div>
             <div>
-                <div style={headerBarStyle}>
-                    <div style={textStyle}>{pageText}</div>
+                <div id='banner'>
+                    <div id='logo'>{pageText}</div>
                 </div>
 
             </div>
@@ -188,118 +173,6 @@ class App extends React.Component {
 
 
 
-class UserList extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.handleNavFirst = this.handleNavFirst.bind(this);
-        this.handleNavPrev = this.handleNavPrev.bind(this);
-        this.handleNavNext = this.handleNavNext.bind(this);
-        this.handleNavLast = this.handleNavLast.bind(this);
-        this.handleInput = this.handleInput.bind(this);
-    }
-
-    handleInput(e) {
-        e.preventDefault();
-        let pageSize = ReactDOM.findDOMNode(this.refs.pageSize).value;
-        if(/^[0-9]+$/.test(pageSize)) {
-            this.props.updatePageSize(pageSize);
-        } else {
-            ReactDOM.findDOMNode(this.ref.pageSize).value = pageSize.substring(0, pageSize.length -1);
-        }
-    }
-    handleNavFirst(e) {
-        e.preventDefault();
-        this.props.onNavigate(this.props.links.first.href);
-    }
-    handleNavPrev(e) {
-
-        e.preventDefault();
-        this.props.onNavigate(this.props.links.prev.href);
-    }
-    handleNavNext(e) {
-        e.preventDefault();
-        this.props.onNavigate(this.props.links.next.href);
-    }
-    handleNavLast(e) {
-        e.preventDefault();
-        this.props.onNavigate(this.props.links.last.href);
-    }
-
-    render() {
-        let users = this.props.users.map(user =>
-            <User key={user.entity._links.self.href}
-                  user={user}
-                  attributes={this.props.attributes}
-                  onUpdate={this.props.onUpdate}
-                  onDelete={this.props.onDelete}/>
-        );
-        let navLinks = [];
-        if("first" in this.props.links) {
-            navLinks.push(<button key="first" onClick={this.handleNavFirst}> &lt;&lt;</button>);
-        }
-        if("prev" in this.props.links) {
-            navLinks.push(<button key="prev" onClick={this.handleNavPrev}>&lt; </button>);
-        }
-        if("next" in this.props.links) {
-            navLinks.push(<button key="next" onClick ={this.handleNavNext}> &gt; </button>);
-        }
-        if("last" in this.props.links) {
-            navLinks.push(<button key="last" onClick={this.handleNavLast}> &gt;&gt; </button>);
-        }
-
-        return (
-            <div>
-                <input ref="pageSize" defaultValue={this.props.pageSize} onInput={this.handleInput}/>
-                <table>
-                    <tbody>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    {users}
-                    </tbody>
-                </table>
-                <div>
-                    {navLinks}
-                </div>
-            </div>
-        )
-    }
-}
-
-class User extends React.Component{
-    constructor(props) {
-        super(props);
-        this.handleDelete = this.handleDelete.bind(this);
-    }
-
-    handleDelete() {
-        this.props.onDelete(this.props.user);
-    }
-
-
-    render() {
-        return (
-            <tr>
-                <td>{this.props.user.entity.firstName}</td>
-                <td>{this.props.user.entity.lastName}</td>
-                <td>{this.props.user.entity.emailAddress}</td>
-                <td>
-                    <UpdateDialog user={this.props.user}
-                                  attributes={this.props.attributes}
-                                  onUpdate={this.props.onUpdate}/>
-                </td>
-                <td>
-                    <button onClick={this.handleDelete}>Delete</button>
-                </td>
-            </tr>
-        );
-    }
-}
 ReactDOM.render(
     <App />,
     document.getElementById('react')

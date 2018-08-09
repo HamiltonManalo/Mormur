@@ -1,4 +1,4 @@
-package brunel.mormur.views;
+package brunel.mormur.Database;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;

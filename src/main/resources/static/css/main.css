@@ -24,6 +24,26 @@ body {
     margin: 0;
     padding: 0;
 }
+
+#banner {
+    height: 60px;
+    width: 100%;
+    background-color: #A0C8A0;
+    top: 0;
+    z-Index: -1;
+    padding: 1px;
+}
+
+#logo {
+    font-Size: 35px;
+    margin-Top: 20px;
+    margin-Left: 40px;
+    margin-Bottom: 5px;
+    font-family: Lato;
+    color: white;
+    align-Self: left
+}
+
 /*Classes for creating dialogs*/
 
 .modalDialog {

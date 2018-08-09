@@ -1,4 +1,4 @@
-package brunel.mormur.views;
+package brunel.mormur.Database;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
