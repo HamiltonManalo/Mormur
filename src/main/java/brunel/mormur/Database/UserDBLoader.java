@@ -5,12 +5,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DatabaseLoader implements CommandLineRunner {
+public class UserDBLoader implements CommandLineRunner {
 
     private final IUserRepository repository;
 
     @Autowired
-    public DatabaseLoader(IUserRepository repository) {
+    public UserDBLoader(IUserRepository repository) {
         this.repository = repository;
     }
 

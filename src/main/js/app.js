@@ -17,6 +17,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {users: [], attributes: [], pageSize: 2, links: {}};
+        ///Context binding
         this.updatePageSize = this.updatePageSize.bind(this);
         this.onCreate = this.onCreate.bind(this);
         this.onUpdate = this.onUpdate.bind(this);
