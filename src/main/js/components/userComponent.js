@@ -23,7 +23,7 @@ export default class User extends React.Component{
                                   onUpdate={this.props.onUpdate}/>
                 </td>
                 <td>
-                    <button onClick={this.handleDelete}>Delete</button>
+                    <button className='delete' onClick={this.handleDelete}>Delete</button>
                 </td>
             </tr>
         );

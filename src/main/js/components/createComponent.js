@@ -38,7 +38,7 @@ export default class CreateDialog extends React.Component {
                         <h2>Create new user</h2>
                         <form>
                             {inputs}
-                            <button onClick={this.handleSubmit}>Create</button>
+                            <button className='create' onClick={this.handleSubmit}>Create</button>
                         </form>
                     </div>
                 </div>

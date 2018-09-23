@@ -37,4 +37,8 @@ Currently the project is built through the *Maven* build tool. What does a build
    *This means your server is now running and you can reach the home page by launching your browser to "Localhost:8080"*          
    
                   
-              
+ ### TOOLING
+ * Rapid Environmental Editor: [Download Here](https://www.rapidee.com/en/download) allows you to edit your system path in a much cleaner way. 
+ * IDEA IDE [Download Here](https://www.jetbrains.com/) Jetbrains is normally a hefty subscription fee. While were in school its free. 
+ * Source Tree GIT UI [Download Here](https://www.sourcetreeapp.com) Handy UI for GIT. Doesn't have all the features of the command line but stream lines review commits and most common use cases
+ 

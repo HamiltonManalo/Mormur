@@ -154,6 +154,11 @@ class App extends React.Component {
             <div>
                 <div id='banner'>
                     <div id='logo'>{pageText}</div>
+                    <div id='navbar'>
+                        <div className='navelement'> link1 </div>
+                        <div className='navelement'> link2 </div>
+                        <div className='navelement'> link3 </div>
+                    </div>
                 </div>
 
             </div>

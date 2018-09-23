@@ -1,3 +1,8 @@
+body {
+    font-family: lato; 
+    background-color: #E5E9F2;
+}
+
 table {
     border-collapse: collapse;
 }
@@ -35,10 +40,10 @@ body {
 }
 
 #logo {
-    font-Size: 35px;
-    margin-Top: 20px;
-    margin-Left: 40px;
-    margin-Bottom: 5px;
+    font-Size: 32px;
+    margin-Top: 15px;
+    margin-Left: 100px;
+    margin-Bottom: 10px;
     font-family: Lato;
     color: white;
     align-Self: left
@@ -98,4 +103,106 @@ body {
     box-shadow: 1px 1px 3px #000;
 }
 
-.close:hover { background: #00d9ff; }
+.close:hover { 
+    background: #00d9ff; 
+}
+
+
+
+button.edit {
+    background-color: #00A6FF;
+    border: none;
+    padding: 9px;
+    margin: 1px 2px;
+    border-radius: 50%; 
+    text-align: center;
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+}
+
+button.join {
+    background-color: #77D353;
+    border: none;
+    padding: 9px;
+    margin: 1px 2px;
+    border-radius: 50%; 
+    text-align: center;
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+}
+
+button.save {
+    background-color: #969FAA;
+    border: none;
+    padding: 9px;
+    margin: 1px 2px;
+    border-radius: 50%; 
+    text-align: center;
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+}
+button.live {
+    background-color: #F95F62;
+    border: none;
+    padding: 9px;
+    margin: 1px 2px;
+    border-radius: 50%; 
+    text-align: center;
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+}
+
+button.create {
+    background-color: #13CE66;
+    border: none;
+    padding: 9px;
+    margin: 1px 2px;
+    border-radius: 50%; 
+    text-align: center;
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+}
+
+button.delete {
+    background-color: #F95F62;
+    border: none;
+    padding: 9px;
+    margin: 1px 2px;
+    border-radius: 50%; 
+    text-align: center;
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    display: inline-block; 
+}
+
+button:hover {
+    background-color: #E5E9F2;
+    border: 2px;
+    border-color: rgb(121, 123, 128);
+}
+
+button.navigate {
+    background-color: #F95F62;
+}
+
+#navbar {
+    right: 60px;
+    top: 30px;
+}
+
+.navelement {
+    border: 0px;
+    padding: 10px;
+
+}

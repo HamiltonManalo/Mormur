@@ -49,16 +49,16 @@ export default class UserList extends React.Component {
         );
         let navLinks = [];
         if("first" in this.props.links) {
-            navLinks.push(<button key="first" onClick={this.handleNavFirst}> &lt;&lt;</button>);
+            navLinks.push(<button className='navigate' key="first" onClick={this.handleNavFirst}> &lt;&lt;</button>);
         }
         if("prev" in this.props.links) {
-            navLinks.push(<button key="prev" onClick={this.handleNavPrev}>&lt; </button>);
+            navLinks.push(<button className='navigate' key="prev" onClick={this.handleNavPrev}>&lt; </button>);
         }
         if("next" in this.props.links) {
-            navLinks.push(<button key="next" onClick ={this.handleNavNext}> &gt; </button>);
+            navLinks.push(<button className='navigate' key="next" onClick ={this.handleNavNext}> &gt; </button>);
         }
         if("last" in this.props.links) {
-            navLinks.push(<button key="last" onClick={this.handleNavLast}> &gt;&gt; </button>);
+            navLinks.push(<button className='navigate' key="last" onClick={this.handleNavLast}> &gt;&gt; </button>);
         }
 
         return (

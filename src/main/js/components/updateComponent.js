@@ -39,7 +39,7 @@ export default class UpdateDialog extends React.Component {
 
                         <form>
                             {inputs}
-                            <button onClick={this.handleSubmit}>Update</button>
+                            <button className='edit' onClick={this.handleSubmit}>Update</button>
                         </form>
                     </div>
                 </div>
