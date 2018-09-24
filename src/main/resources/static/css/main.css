@@ -1,0 +1,215 @@
+body {
+    font-family: lato; 
+    background-color: #E5E9F2;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #999;
+    padding: 0.5rem;
+    text-align: left;
+}
+input.field {
+    width: 90%;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #999;
+    padding: 0.5rem;
+    text-align: left;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#banner {
+    height: 60px;
+    width: 100%;
+    background-color: #A0C8A0;
+    top: 0;
+    z-Index: -1;
+    padding: 1px;
+}
+
+#logo {
+    font-Size: 32px;
+    margin-Top: 15px;
+    margin-Left: 100px;
+    margin-Bottom: 10px;
+    font-family: Lato;
+    color: white;
+    display: flex;
+}
+
+/*Classes for creating dialogs*/
+
+.modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+
+.modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+
+.modalDialog > div {
+    width: 400px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: #fff;
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
+}
+
+.close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover { 
+    background: #00d9ff; 
+}
+
+
+
+button.edit {
+    background-color: #00A6FF;
+    border: none;
+    padding: 9px;
+    margin: 1px 2px;
+    border-radius: 50%; 
+    text-align: center;
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+}
+
+button.join {
+    background-color: #77D353;
+    border: none;
+    padding: 9px;
+    margin: 1px 2px;
+    border-radius: 50%; 
+    text-align: center;
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+}
+
+button.save {
+    background-color: #969FAA;
+    border: none;
+    padding: 9px;
+    margin: 1px 2px;
+    border-radius: 50%; 
+    text-align: center;
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+}
+button.live {
+    background-color: #F95F62;
+    border: none;
+    padding: 9px;
+    margin: 1px 2px;
+    border-radius: 50%; 
+    text-align: center;
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+}
+
+button.create {
+    background-color: #13CE66;
+    border: none;
+    padding: 9px;
+    margin: 1px 2px;
+    border-radius: 50%; 
+    text-align: center;
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+}
+
+button.delete {
+    background-color: #F95F62;
+    border: none;
+    padding: 9px;
+    margin: 1px 2px;
+    border-radius: 50%; 
+    text-align: center;
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    display: inline-block; 
+}
+
+button:hover {
+    background-color: #E5E9F2;
+    border: 2px;
+    border-color: rgb(121, 123, 128);
+}
+
+button.navigate {
+    background-color: #F95F62;
+}
+
+#navbar {
+    right: 60px;
+    top: 10px;
+    display: flex;
+    float: right;
+    position: absolute;
+}
+
+#navbar > div {
+    display: inline;
+}
+
+.navelement {
+    border: 0px;
+    padding: 10px;
+
+}
