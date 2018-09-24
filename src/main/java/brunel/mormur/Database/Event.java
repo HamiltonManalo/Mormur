@@ -6,14 +6,16 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+@Embeddable
 @Data
 @Table(name = "Events")
 @Entity
 public class Event {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private long id;
+    @Embedded
     @Column(name = "host")
     private long hostId;
     @Column(name = "title")

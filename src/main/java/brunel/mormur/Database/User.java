@@ -7,22 +7,25 @@ import brunel.mormur.controllers.*;
 
 import javax.persistence.*;
 
-
+@Embeddable
 @Data
 @Entity
 @Table(name = "Users")
 public class User {
 
-    @Id
-//    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+//    @Id
+////    @Column(name = "id")
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private long id;
+    @Embedded
     @Column(name = "firstName")
     private String firstName;
     @Column(name = "lastName")
     private String lastName;
     @Column(name = "email")
     private String emailAddress;
+    @Column(name = "educationalInstitution")
+    private String educationalInstitution;
 
 //    @Column(name = "version")
     private @Version @JsonIgnore Long version;

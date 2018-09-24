@@ -12,11 +12,13 @@ export default class User extends React.Component{
 
 
     render() {
+
         return (
             <tr>
                 <td>{this.props.user.entity.firstName}</td>
                 <td>{this.props.user.entity.lastName}</td>
                 <td>{this.props.user.entity.emailAddress}</td>
+                <td> {this.props.user.entity.educationalInstitution} </td>
                 <td>
                     <UpdateDialog user={this.props.user}
                                   attributes={this.props.attributes}
@@ -24,6 +26,8 @@ export default class User extends React.Component{
                 </td>
                 <td>
                     <button className='delete' onClick={this.handleDelete}>Delete</button>
+                </td>
+                <td> <button className='join' onClick={this.handleJoin}>Join</button>
                 </td>
             </tr>
         );

@@ -45,7 +45,9 @@ export default class UserList extends React.Component {
                   user={user}
                   attributes={this.props.attributes}
                   onUpdate={this.props.onUpdate}
-                  onDelete={this.props.onDelete}/>
+                  onDelete={this.props.onDelete}
+                  onJoin={this.props.onJoin}
+            />
         );
         let navLinks = [];
         if("first" in this.props.links) {

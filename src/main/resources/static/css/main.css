@@ -46,7 +46,6 @@ body {
     margin-Bottom: 10px;
     font-family: Lato;
     color: white;
-    align-Self: left
 }
 
 /*Classes for creating dialogs*/
@@ -199,6 +198,10 @@ button.navigate {
 #navbar {
     right: 60px;
     top: 30px;
+}
+
+#navbar > div {
+    display: inline;
 }
 
 .navelement {

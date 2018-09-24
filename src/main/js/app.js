@@ -103,6 +103,12 @@ class App extends React.Component {
 
     }
 
+    onJoin(user) {
+        client({method: 'PUT', path: user.entity._links.self.href}).done(responses => {
+            this.loadFromServer(this.state.pageSize)
+        });
+    }
+
     onNavigate(navUri) {
         client({
             method: 'GET',
@@ -170,6 +176,7 @@ class App extends React.Component {
                               onNavigate={this.onNavigate}
                               onUpdate={this.onUpdate}
                               onDelete={this.onDelete}
+                              onJoin={this.onJoin}
                               updatePageSize={this.updatePageSize}/>
             </div>
         )
