@@ -1,0 +1,43 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  color: $colour-black;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $font-family-heading;
+}
+
+p,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  color: $colour-primary;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: $colour-secondary;
+  text-decoration: none;
+}
+
+button:active,
+button:focus,
+a:active,
+a:hover {
+  outline: none;
+}

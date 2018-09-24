@@ -1,0 +1,92 @@
+.navbar:before,
+.navbar:after {
+  display: table;
+  content: " ";
+}
+
+.navbar:after {
+  clear: both;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 70px;
+  z-index: 1000;
+  transition: top 0.2s ease-in-out;
+  border-bottom: 1px solid $colour-border;
+  background-color: $colour-white;
+
+  .logo {
+    float: left;
+    display: inline;
+    width: 100px;
+    padding: 20px 0 0 10px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  h1 {
+    font-size: 1em;
+    line-height: 1;
+  }
+
+  ul {
+    float: right;
+    height: 70px;
+  }
+
+  li {
+    float: left;
+    display: inline;
+    height: 70px;
+  }
+
+  a {
+    display: block;
+    cursor: pointer;
+  }
+}
+
+.nb-toggle {
+  border-left: 1px solid $colour-border;
+
+  a {
+    padding: 26px 20px;
+  }
+
+  span {
+    -webkit-transition: background-color 0.5s ease-in-out;
+       -moz-transition: background-color 0.5s ease-in-out;
+            transition: background-color 0.5s ease-in-out;
+    display: block;
+    width: 30px;
+    height: 4px;
+    background-color: #b2b2b2;
+  }
+
+  span + span {
+    margin-top: 3px;
+  }
+}
+
+.nb-toggle a:hover span {
+  background-color: #7f7f7f;
+}
+
+.navbar-up {
+  top: -70px;
+}
+
+@media (min-width: $break4) {
+
+  .navbar .logo {
+    width: 180px;
+    padding-top: 10px;
+  }
+}
