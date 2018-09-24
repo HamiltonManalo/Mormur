@@ -17,12 +17,12 @@ import java.util.Date;
         public void run(String... strings) throws Exception
         {
             //To test the columns of the repository
-            User u1 = new User("Frodo", "Baggins", "ring bearer",1L);
-            Event ev = new Event("Ted Talks with Ted", 123);
+            User u1 = new User("Frodo", "Baggins", "ring bearer");
+            Event ev = new Event("Ted Talks with Ted", 123L);
             Date d1 = new Date();
 
             this.repository.save(new QAResponse(
-                    "Oh good lord, this is a lot of data", 1, new Date(), new Date(), u1, null, ev, null, null, null, 1L));
+                    "Oh good lord, this is a lot of data", 1, new Date(), new Date(), u1, null, ev, null, null, null));
         }
 
 }
