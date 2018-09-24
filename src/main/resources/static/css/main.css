@@ -46,6 +46,7 @@ body {
     margin-Bottom: 10px;
     font-family: Lato;
     color: white;
+    display: flex;
 }
 
 /*Classes for creating dialogs*/
@@ -197,7 +198,10 @@ button.navigate {
 
 #navbar {
     right: 60px;
-    top: 30px;
+    top: 10px;
+    display: flex;
+    float: right;
+    position: absolute;
 }
 
 #navbar > div {
