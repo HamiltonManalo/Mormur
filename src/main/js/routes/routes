@@ -1,0 +1,20 @@
+import {Route} from "react-router-dom";
+import SessionView from "../components/sessionViewComponent";
+import UserView from "../components/userViewComponent";
+import React from 'react';
+
+const routes = () => {
+    return (
+        <div>
+        <Route exact path="/" component={Home}/>
+        <Route path="/SessionView" component={SessionView}/>
+        <Route path="/UserList" component={UserView}/>
+        </div>
+    )
+}
+export default routes;
+const Home = () => (
+    <div>
+        <h2>Home</h2>
+    </div>
+)

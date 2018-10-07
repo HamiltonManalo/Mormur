@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-export default class UpdateDialog extends React.Component {
+export default class UpdateDialog extends React.PureComponent {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);

@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +27,12 @@ public class QAResponse {
     private Date dateCreated;
     @Column(name = "dateUpdated")
     private Date dateUpdated;
+
+    @Column(name = "dateDeleted")
+    private Date dateDeleted;
+    @Temporal(value = TemporalType.TIMESTAMP)
+    @ElementCollection(targetClass = Date.class)
+    List<Date> editDates = new ArrayList<>();
 
     @ManyToOne(targetEntity = User.class, cascade=CascadeType.ALL)
 //    @Column(name = "owner")
@@ -49,25 +56,25 @@ public class QAResponse {
     @Column(name = "userIDLikeList")
     private List<Integer> userIDLikeList;
 
-//    @Version @JsonIgnore
-//    private long version;
+    @Version @JsonIgnore
+    private long version;
 
     private QAResponse() {}
 
 
-//    public QAResponse(String body, int messageType, Date dateCreated, Date dateUpdated, User owner, String[] keyWords, Event event, QAResponse parent, List<QAResponse> children, List<Integer> userIDLikeList, long version) {
-//        this.body = body;
-//        this.messageType = messageType;
-//        this.dateCreated = dateCreated;
-//        this.dateUpdated = dateUpdated;
-//        this.owner = owner;
-//        this.keyWords = keyWords;
-//        this.event = event;
-//        this.parent = parent;
-//        this.children = children;
-//        this.userIDLikeList = userIDLikeList;
-//        this.version = version;
-//    }
+    public QAResponse(String body, int messageType, Date dateCreated, Date dateUpdated, User owner, String[] keyWords, Event event, QAResponse parent, List<QAResponse> children, List<Integer> userIDLikeList, long version) {
+        this.body = body;
+        this.messageType = messageType;
+        this.dateCreated = dateCreated;
+        this.dateUpdated = dateUpdated;
+        this.owner = owner;
+        this.keyWords = keyWords;
+        this.event = event;
+        this.parent = parent;
+        this.children = children;
+        this.userIDLikeList = userIDLikeList;
+        this.version = version;
+    }
 
     public QAResponse(String body, int messageType, Date dateCreated, Date dateUpdated, User owner, String[] keyWords, Event event, QAResponse parent, List<QAResponse> children, List<Integer> userIDLikeList) {
         this.body = body;
@@ -80,6 +87,6 @@ public class QAResponse {
         this.parent = parent;
         this.children = children;
         this.userIDLikeList = userIDLikeList;
-//        this.version = 1L;
+        this.version = 1L;
     }
 }
