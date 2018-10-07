@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import User from './userComponent'
-export default class UserList extends React.Component {
+export default class UserList extends React.PureComponent {
 
     constructor(props) {
         super(props);
@@ -72,7 +72,7 @@ export default class UserList extends React.Component {
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Email</th>
-                        <th></th>
+                        <th>EducationalInst</th>
                         <th></th>
                     </tr>
                     {users}

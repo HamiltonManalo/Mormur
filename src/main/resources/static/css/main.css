@@ -213,3 +213,25 @@ button.navigate {
     padding: 10px;
 
 }
+.navbutton {
+    background-color: #A0C8A0;
+    color: white;
+    padding: 2px;
+    border: 0px hidden;
+    font-family: Lato;
+
+}
+.navbutton:hover {
+    cursor: pointer;
+    background-color: transparent;
+
+}
+.navbutton:focus {
+    outline: transparent;
+}
+.maincontainer {
+    background-color: #DCDCC8;
+    display: inline-flex;
+    height: 75%;
+    width: 60%;
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-export default class CreateDialog extends React.Component {
+export default class CreateDialog extends React.PureComponent {
 
     constructor(props) {
         super(props);

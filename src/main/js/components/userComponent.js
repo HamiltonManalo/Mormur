@@ -1,6 +1,7 @@
 import React from 'react'
 import UpdateDialog from './updateComponent'
-export default class User extends React.Component{
+
+export default class User extends React.PureComponent{
     constructor(props) {
         super(props);
         this.handleDelete = this.handleDelete.bind(this);
@@ -18,7 +19,7 @@ export default class User extends React.Component{
                 <td>{this.props.user.entity.firstName}</td>
                 <td>{this.props.user.entity.lastName}</td>
                 <td>{this.props.user.entity.emailAddress}</td>
-                <td> {this.props.user.entity.educationalInstitution} </td>
+                <td>{this.props.user.entity.educationalInstitution}</td>
                 <td>
                     <UpdateDialog user={this.props.user}
                                   attributes={this.props.attributes}
