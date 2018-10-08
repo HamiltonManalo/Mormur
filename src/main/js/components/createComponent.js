@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-export default class CreateDialog extends React.PureComponent {
+export default class CreateDialog extends React.Component {
 
     constructor(props) {
         super(props);
@@ -23,7 +23,6 @@ export default class CreateDialog extends React.PureComponent {
     render() {
         // if(this.props.attributes)
         //Need backend User Model updated to reflect educational institute data point
-        this.props.attributes.push("Educational Institution")
         let inputs = this.props.attributes.map(attribute =>
             <p key={attribute}>
                 <input type="text" placeholder={attribute} ref={attribute} className="field"/>
@@ -32,8 +31,11 @@ export default class CreateDialog extends React.PureComponent {
 
         return (
             <div>
-                <a href="#createUser">Create</a>
-
+                <div>
+                    <button className='createbtn'>
+                        <a className='test' href="#createUser">Create Session</a>
+                    </button>
+                </div>
                 <div id="createUser" className="modalDialog">
                     <div>
                         <a href="#" title="Close" className="close">X</a>

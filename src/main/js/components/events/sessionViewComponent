@@ -149,7 +149,6 @@ export default class SessionView extends React.Component {
             <div>
                 <h2> Available Sessions </h2>
                 <div className='maincontainer'>
-                    <CreateDialog attributes={this.state.attributes} onCreate={this.onCreate}/>
                     <SessionList events={this.state.events}
                               links={this.state.links}
                               pageSize={this.state.pageSize}
@@ -160,6 +159,9 @@ export default class SessionView extends React.Component {
                               onJoin={this.onJoin}
                               updatePageSize={this.updatePageSize}/>
                 </div>
+                    <div>
+                            <CreateDialog className='test' attributes={this.state.attributes} onCreate={this.onCreate}/>
+                    </div>
             </div>
         )
     }
