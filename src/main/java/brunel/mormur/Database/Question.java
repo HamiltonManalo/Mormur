@@ -26,7 +26,7 @@ public class Question {
 
     @ManyToOne(targetEntity = User.class, cascade=CascadeType.ALL)
     @Column(name = "ParticipantID")
-    private User participantId;
+    private User participant;
 
     @Column(name = "QuestionText")
     private String questionText;
@@ -42,15 +42,9 @@ public class Question {
     @Column(name = "DateModified")
     private Date dateUpdated;
 
-
-
-
     @ManyToOne(targetEntity = SessionDetails.class, cascade=CascadeType.ALL)
     @Column(name = "SessionDetails")
     private SessionDetails session;
-
-
-
 
     @ElementCollection(targetClass=Integer.class)
     @Column(name = "userIDLikeList")
@@ -61,32 +55,25 @@ public class Question {
 
     private Question() {}
 
-
-    public Question(String body, int messageType, Date dateCreated, Date dateUpdated, User participantId, String[] keyWords, SessionDetails sessionDetails, Question parent, List<Question> children, List<Integer> userIDLikeList, long version) {
-        this.body = body;
-        this.messageType = messageType;
+    public Question(long linkedQuestionIds, User participant, String questionText, ArrayList<String> hashTags, Date dateCreated, Date dateUpdated, SessionDetails session, List<Integer> userIDLikeList) {
+        this.linkedQuestionIds = linkedQuestionIds;
+        this.participant = participant;
+        this.questionText = questionText;
+        this.hashTags = hashTags;
         this.dateCreated = dateCreated;
         this.dateUpdated = dateUpdated;
-        this.participantId = participantId;
-        this.keyWords = keyWords;
-        this.event = sessionDetails;
-        this.parent = parent;
-        this.children = children;
+        this.session = session;
         this.userIDLikeList = userIDLikeList;
+        }
+    public Question(User participant, String questionText, Date dateCreated, Date dateUpdated, SessionDetails session) {
+        this.linkedQuestionIds = 0L;
+        this.participant = participant;
+        this.questionText = questionText;
+        this.hashTags = null;
+        this.dateCreated = dateCreated;
+        this.dateUpdated = dateUpdated;
+        this.session = session;
+        this.userIDLikeList = null;
         this.version = version;
-    }
-
-    public Question(String body, int messageType, Date dateCreated, Date dateUpdated, User participantId, String[] keyWords, SessionDetails sessionDetails, Question parent, List<Question> children, List<Integer> userIDLikeList) {
-        this.body = body;
-        this.messageType = messageType;
-        this.dateCreated = dateCreated;
-        this.dateUpdated = dateUpdated;
-        this.participantId = participantId;
-        this.keyWords = keyWords;
-        this.event = sessionDetails;
-        this.parent = parent;
-        this.children = children;
-        this.userIDLikeList = userIDLikeList;
-        this.version = 1L;
     }
 }

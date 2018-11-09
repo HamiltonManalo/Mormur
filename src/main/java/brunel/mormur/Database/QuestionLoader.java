@@ -7,12 +7,12 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-    public class QAResponseLoader implements CommandLineRunner {
+    public class QuestionLoader implements CommandLineRunner {
 
-        private final IQAResponseRepository repository;
+        private final IQuestionRepository repository;
 
         @Autowired
-        public QAResponseLoader(IQAResponseRepository repository) { this.repository = repository; }
+        public QuestionLoader(IQuestionRepository repository) { this.repository = repository; }
         @Override
         public void run(String... strings) throws Exception
         {
@@ -21,8 +21,8 @@ import java.util.Date;
             SessionDetails ev = new SessionDetails("Ted Talks with Ted", 123L);
             Date d1 = new Date();
 
-            this.repository.save(new Question(
-                    "Oh good lord, this is a lot of data", 1, new Date(), new Date(), u1, null, ev, null, null, null));
+            this.repository.save(new Question(u1,
+                    "Oh good lord, this is a lot of data", new Date(), new Date(), ev));
         }
 
 }

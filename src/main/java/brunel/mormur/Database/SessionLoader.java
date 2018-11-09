@@ -6,12 +6,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EventDBLoader implements CommandLineRunner {
+public class SessionLoader implements CommandLineRunner {
 
-    private final IEventsRepository repoistory;
+    private final ISessionRepository repoistory;
 
     @Autowired
-    public EventDBLoader(IEventsRepository repository) {
+    public SessionLoader(ISessionRepository repository) {
         this.repoistory = repository;
     }
 
