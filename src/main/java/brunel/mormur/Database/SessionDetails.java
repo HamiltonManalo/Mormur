@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @Table(name = "Events")
 @Entity
-public class Event {
+public class SessionDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,22 +21,22 @@ public class Event {
     @Column(name = "title")
     private String title;
 
-    @OneToMany(targetEntity = QAResponse.class)
-    List<QAResponse> replies;
+    @OneToMany(targetEntity = Question.class)
+    List<Question> replies;
 
     @Version @JsonIgnore
     private long version;
 
-    public Event() {}
+    public SessionDetails() {}
 
-    public Event(String title, long hostId) {
+    public SessionDetails(String title, long hostId) {
         this.title = title;
         this.hostId = hostId;
         this.version = 1L;
 
     }
 
-    public Event(String title, long hostId, long version) {
+    public SessionDetails(String title, long hostId, long version) {
         this.title = title;
         this.hostId = hostId;
         this.version = version;

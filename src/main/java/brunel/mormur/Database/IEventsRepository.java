@@ -2,8 +2,8 @@ package brunel.mormur.Database;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface IEventsRepository extends PagingAndSortingRepository<Event, Long> {
+public interface IEventsRepository extends PagingAndSortingRepository<SessionDetails, Long> {
 
-    Event save(Event event);
+    SessionDetails save(SessionDetails sessionDetails);
 
 }

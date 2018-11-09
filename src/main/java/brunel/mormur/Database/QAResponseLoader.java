@@ -18,10 +18,10 @@ import java.util.Date;
         {
             //To test the columns of the repository
             User u1 = new User("Frodo", "Baggins", "ring bearer");
-            Event ev = new Event("Ted Talks with Ted", 123L);
+            SessionDetails ev = new SessionDetails("Ted Talks with Ted", 123L);
             Date d1 = new Date();
 
-            this.repository.save(new QAResponse(
+            this.repository.save(new Question(
                     "Oh good lord, this is a lot of data", 1, new Date(), new Date(), u1, null, ev, null, null, null));
         }
 
