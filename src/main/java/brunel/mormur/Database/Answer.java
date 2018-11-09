@@ -18,7 +18,7 @@ public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "AnswerID")
-    private long id;
+    private Long id;
 
     @Column(name = "AnswerText")
     private String answerText;
@@ -44,7 +44,7 @@ public class Answer {
     private User user;
 
     @Version @JsonIgnore
-    private long version;
+    private Long version;
 
     public Answer(String answerText, Date dateCreated, Date dateModified, Question questionLink, User user) {
         this.answerText = answerText;

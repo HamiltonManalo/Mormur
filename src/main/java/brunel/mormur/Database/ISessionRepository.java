@@ -4,6 +4,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface ISessionRepository extends PagingAndSortingRepository<SessionDetails, Long> {
 
-    SessionDetails save(SessionDetails sessionDetails);
+//    SessionDetails save(SessionDetails sessionDetails);
 
 }

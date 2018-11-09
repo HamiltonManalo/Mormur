@@ -20,7 +20,7 @@ public class SessionLoader implements CommandLineRunner {
 
         User user1 = new User("Ted", "Teddleson", "Ted@TedsBeds.com");
         User user2 = new User("Larry", "Charleston", "Larry@charlestonschews.com");
-        this.repoistory.save(new SessionDetails("Ted Talks with Ted", 123L));
-        this.repoistory.save(new SessionDetails("Chewing with Grace, with Larry", 1234L));
+        this.repoistory.save(new SessionDetails("Ted Talks with Ted"));
+        this.repoistory.save(new SessionDetails("Chewing with Grace, with Larry"));
     }
 }

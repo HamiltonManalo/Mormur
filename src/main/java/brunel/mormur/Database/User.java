@@ -17,7 +17,7 @@ public class User {
     @Id
     @Column(name = "Id")
     @GeneratedValue(strategy =  GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column(name = "FirstName")
     private String firstName;
@@ -42,7 +42,7 @@ public class User {
     private String userBadge;
 
     @Column(name = "ModerationFlag")
-    private boolean moderationFlag;
+    private Boolean moderationFlag;
 
     @Temporal(value = TemporalType.TIMESTAMP)
     @Column(name = "LastLogin")
@@ -56,7 +56,7 @@ public class User {
 
     @Column(name = "version")
     @Version @JsonIgnore
-    private long version;
+    private Long version;
 
     private User() {}
 

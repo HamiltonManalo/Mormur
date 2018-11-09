@@ -13,11 +13,12 @@ import java.util.List;
 public class SessionDetails {
 
     @Id
+    @Column(name = "SessionId")
     @GeneratedValue(strategy =  GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column(name = "host")
-    private long hostId;
+    private Long hostId;
 
     @Column(name = "title")
     private String title;
@@ -26,15 +27,19 @@ public class SessionDetails {
     List<Question> replies;
 
     @Version @JsonIgnore
-    private long version;
+    private Long version;
 
-    public SessionDetails(String title, long hostId) {
+
+    public SessionDetails() {
+
+    }
+
+    public SessionDetails(String title) {
         this.title = title;
-        this.hostId = hostId;
         this.version = 1L;
     }
 
-    public SessionDetails(String title, long hostId, long version) {
+    public SessionDetails(String title, Long hostId, Long version) {
         this.title = title;
         this.hostId = hostId;
         this.version = version;

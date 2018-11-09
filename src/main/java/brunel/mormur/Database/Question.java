@@ -9,9 +9,9 @@ import java.util.Date;
 import java.util.List;
 
 
-@Data
 @Entity
 @Table(name = "Question")
+@Data
 public class Question {
 
     @Id
@@ -21,7 +21,7 @@ public class Question {
 
     @JoinColumn(name = "LinkedQuestionID")
     @OneToOne(targetEntity = Question.class, cascade = CascadeType.ALL)
-    private long linkedQuestionIds;
+    private Long linkedQuestionIds;
 
     @OneToOne(targetEntity = User.class, cascade=CascadeType.ALL)
     @JoinColumn(name = "ParticipantID")
@@ -54,7 +54,7 @@ public class Question {
 
     private Question() {}
 
-    public Question(long linkedQuestionIds, User participant, String questionText, ArrayList<String> hashTags, Date dateCreated, Date dateUpdated, SessionDetails session, List<Integer> userIDLikeList) {
+    public Question(Long linkedQuestionIds, User participant, String questionText, ArrayList<String> hashTags, Date dateCreated, Date dateUpdated, SessionDetails session, List<Integer> userIDLikeList) {
         this.linkedQuestionIds = linkedQuestionIds;
         this.participant = participant;
         this.questionText = questionText;
@@ -76,4 +76,6 @@ public class Question {
         this.userIDLikeList = null;
         this.version = 0L;
     }
+
+
 }
