@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -22,9 +23,9 @@ public class Answer {
     @Column(name = "AnswerText")
     private String answerText;
 
-    @Column(name = "MediaFileAttachment")
     @ElementCollection(targetClass=String.class)
-    private ArrayList<String> media;
+    @Column(name = "MediaFileAttachment")
+    private List<String> media;
 
     @Temporal(value = TemporalType.TIMESTAMP)
     @Column(name = "DateCreated")
@@ -35,11 +36,11 @@ public class Answer {
     private Date dateModified;
 
     @OneToOne(targetEntity = Question.class, cascade=CascadeType.ALL)
-    @Column(name = "QuestionID")
+    @JoinColumn(name = "QuestionID")
     private Question questionLink;
 
     @OneToOne(targetEntity = User.class, cascade = CascadeType.ALL)
-    @Column(name = "UserID")
+    @JoinColumn(name = "UserID")
     private User user;
 
     @Version @JsonIgnore

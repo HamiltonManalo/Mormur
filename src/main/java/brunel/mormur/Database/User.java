@@ -16,7 +16,7 @@ public class User {
 
     @Id
     @Column(name = "Id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy =  GenerationType.AUTO)
     private long id;
 
     @Column(name = "FirstName")
@@ -70,6 +70,7 @@ public class User {
         this.userBadge = "www.google.com";
         this.moderationFlag = false;
         this.lastLogin = new Date();
+        this.version = 0L;
     }
 //    public User(String firstName, String lastName, String emailAddress, long version) {
 //        this.firstName = firstName;
@@ -77,9 +78,6 @@ public class User {
 //        this.emailAddress = emailAddress;
 //        this.version = version;
 //    }
-
-
-
 
     public User(String firstName, String lastName, String emailAddress, String password, Date joined, String imageURL, String userBadge, boolean moderationFlag, Date lastLogin) {
         this.firstName = firstName;
@@ -91,6 +89,7 @@ public class User {
         this.userBadge = userBadge;
         this.moderationFlag = moderationFlag;
         this.lastLogin = lastLogin;
+        this.version = 0L;
     }
 }
 

@@ -12,20 +12,19 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "Question")
-
 public class Question {
 
     @Id
     @Column(name = "QuestionID")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
-    @Column(name = "LinkedQuestionID")
+    @JoinColumn(name = "LinkedQuestionID")
     @OneToOne(targetEntity = Question.class, cascade = CascadeType.ALL)
     private long linkedQuestionIds;
 
-    @ManyToOne(targetEntity = User.class, cascade=CascadeType.ALL)
-    @Column(name = "ParticipantID")
+    @OneToOne(targetEntity = User.class, cascade=CascadeType.ALL)
+    @JoinColumn(name = "ParticipantID")
     private User participant;
 
     @Column(name = "QuestionText")
@@ -42,8 +41,8 @@ public class Question {
     @Column(name = "DateModified")
     private Date dateUpdated;
 
-    @ManyToOne(targetEntity = SessionDetails.class, cascade=CascadeType.ALL)
-    @Column(name = "SessionDetails")
+    @OneToOne(targetEntity = SessionDetails.class, cascade=CascadeType.ALL)
+    @JoinColumn(name = "SessionDetails")
     private SessionDetails session;
 
     @ElementCollection(targetClass=Integer.class)
@@ -51,7 +50,7 @@ public class Question {
     private List<Integer> userIDLikeList;
 
     @Version @JsonIgnore
-    private long version;
+    private Long version;
 
     private Question() {}
 
@@ -64,6 +63,7 @@ public class Question {
         this.dateUpdated = dateUpdated;
         this.session = session;
         this.userIDLikeList = userIDLikeList;
+        this.version = 0L;
         }
     public Question(User participant, String questionText, Date dateCreated, Date dateUpdated, SessionDetails session) {
         this.linkedQuestionIds = 0L;
@@ -74,6 +74,6 @@ public class Question {
         this.dateUpdated = dateUpdated;
         this.session = session;
         this.userIDLikeList = null;
-        this.version = version;
+        this.version = 0L;
     }
 }
