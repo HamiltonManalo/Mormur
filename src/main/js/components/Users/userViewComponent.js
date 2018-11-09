@@ -1,9 +1,9 @@
 'use strict';
 import when from "when";
-import client from'../client';
-import follow from '../follow';
+import client from '../../client';
+import follow from '../../follow';
 import React from 'react';
-import CreateDialog from "./createComponent";
+import CreateDialog from "../createComponent";
 import UserList from "./userListComponent";
 
 const root = '/api';
@@ -147,24 +147,23 @@ export default class UserView extends React.PureComponent {
         }
     }
 
-render() {
-    console.log("Render called")
-    return (
+    render() {
+        return (
 
-        <div>
-            <div className='maincontainer'>
-                <CreateDialog attributes={this.state.attributes} onCreate={this.onCreate}/>
-                <UserList users={this.state.users}
-                          links={this.state.links}
-                          pageSize={this.pageSize}
-                          attributes={this.state.attributes}
-                          onNavigate={this.onNavigate}
-                          onUpdate={this.onUpdate}
-                          onDelete={this.onDelete}
-                          onJoin={this.onJoin}
-                          updatePageSize={this.updatePageSize}/>
+            <div>
+                <div className='maincontainer'>
+                    <CreateDialog attributes={this.state.attributes} onCreate={this.onCreate}/>
+                    <UserList users={this.state.users}
+                              links={this.state.links}
+                              pageSize={this.pageSize}
+                              attributes={this.state.attributes}
+                              onNavigate={this.onNavigate}
+                              onUpdate={this.onUpdate}
+                              onDelete={this.onDelete}
+                              onJoin={this.onJoin}
+                              updatePageSize={this.updatePageSize}/>
+                </div>
             </div>
-        </div>
-    )
-}
+        )
+    }
 }

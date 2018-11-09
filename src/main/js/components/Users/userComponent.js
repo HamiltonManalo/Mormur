@@ -1,5 +1,5 @@
 import React from 'react'
-import UpdateDialog from './updateComponent'
+import UpdateDialog from '../updateComponent'
 
 export default class User extends React.PureComponent{
     constructor(props) {

@@ -229,9 +229,40 @@ button.navigate {
 .navbutton:focus {
     outline: transparent;
 }
+
+.createbtn {
+    background-color: #13CE66;
+    border: 1px;
+    border-radius: 20px;
+    height:30px;
+    width: 120px;
+    font-family: lato;
+    font-weight: bold;
+    color: white;
+    display: block;
+    position: relative;
+    left: 45%;
+    right: 45%
+}
+
+.createbtn:hover {
+    background-color: #13CE66;
+}
+
+.createbtn:focus {
+    outline: transparent;
+}
+
+
 .maincontainer {
     background-color: #DCDCC8;
     display: inline-flex;
     height: 75%;
     width: 60%;
+    left:20%;
+    position: absolute;
+}
+.test {
+    color: white;
+    text-decoration: none;
 }

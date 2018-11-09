@@ -12,8 +12,8 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
 import Header from './components/headerComponent'
-import SessionView from "./components/sessionViewComponent";
-import UserView from "./components/userViewComponent";
+import SessionView from "./components/events/sessionViewComponent";
+import UserView from "./components/Users/userViewComponent";
 
 
 class App extends React.Component {
