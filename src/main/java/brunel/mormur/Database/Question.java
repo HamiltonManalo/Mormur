@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.*;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.List;
 @Entity
 @Table(name = "Questions")
 @Data
+@ToString(exclude = "session")
 public class Question {
 
     @Id
@@ -48,7 +50,6 @@ public class Question {
 //    @JoinColumn(name = "SessionDetails")
     @JsonManagedReference
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-    @Getter(AccessLevel.NONE)
     private SessionDetails session;
 
     @ElementCollection(targetClass=Integer.class)
