@@ -4,7 +4,7 @@ import client from "../../client";
 import follow from "../../follow";
 import when from "when";
 import CreateDialog from "../createComponent";
-import SessionList from "../events/sessionListComponent";
+import SessionList from "./sessionListComponent";
 
 const root = '/api';
 
@@ -30,7 +30,7 @@ export default class SessionView extends React.Component {
     }
     loadFromServer(pageSize) {
         follow(client, root, [
-            {rel: 'events', params: {size: pageSize}}]
+            {rel: 'sessionDetailses', params: {size: pageSize}}]
         ).then(eventCollections => {
             return client({
                 method: 'GET',
@@ -42,7 +42,7 @@ export default class SessionView extends React.Component {
                 return eventCollections;
             });
         }).then(eventCollection => {
-            return eventCollection.entity._embedded.events.map(event =>
+            return eventCollection.entity._embedded.sessionDetailses.map(event =>
                 client({
                     method: 'GET',
                     path: event._links.self.href
@@ -62,7 +62,7 @@ export default class SessionView extends React.Component {
 
     onCreate(newEvent) {
         let self = this;
-        follow(client, root, ['events']).then(response => {
+        follow(client, root, ['sessionDetailses']).then(response => {
             return client({
                 method: 'POST',
                 path: response.entity._links.self.href,
@@ -71,7 +71,7 @@ export default class SessionView extends React.Component {
             })
         }).then(response => {
             return follow(client, root,
-                [{rel: 'events', params: {'size': self.state.pageSize}}]);
+                [{rel: 'sessionDetailses', params: {'size': self.state.pageSize}}]);
         }).done(response => {
             if(typeof response.entity._links.last != "undefined") {
                 this.onNavigate(response.entity._links.last.href);
@@ -128,6 +128,8 @@ export default class SessionView extends React.Component {
         }).then(eventPromises => {
             return when.all(eventPromises)
         }).done(events => {
+            console.log("Printing API call")
+            console.dir(events)
             this.setState({
                 events: events,
                 attributes: Object.keys(this.schema.properties),
@@ -143,7 +145,6 @@ export default class SessionView extends React.Component {
         }
     }
     render() {
-        console.log("Render called events")
         return (
 
             <div>

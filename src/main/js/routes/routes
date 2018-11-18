@@ -1,5 +1,5 @@
 import {Route} from "react-router-dom";
-import SessionView from "../components/events/sessionViewComponent";
+import SessionView from "../components/sessions/sessionViewComponent";
 import UserView from "../components/Users/userViewComponent";
 import React from 'react';
 

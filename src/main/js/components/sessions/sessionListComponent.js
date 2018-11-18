@@ -64,6 +64,7 @@ export default class SessionList extends React.PureComponent {
 
         return (
             <div>
+                <p> test </p>
                 <input ref="pageSize" defaultValue={this.props.pageSize} onInput={this.handleInput}/>
                 <table>
                     <tbody>

@@ -22,7 +22,6 @@ export default class UserView extends React.PureComponent {
         this.onNavigate = this.onNavigate.bind(this);
         this.onJoin = this.onJoin.bind(this);
         this.loadFromServer = this.loadFromServer.bind(this);
-        console.log('user view called');
     }
     componentWillMount(){
         client({

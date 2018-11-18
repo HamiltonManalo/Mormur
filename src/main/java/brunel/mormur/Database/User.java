@@ -29,6 +29,7 @@ public class User {
     private String emailAddress;
 
     @Column(name = "Password")
+    @JsonIgnore
     private String password;
 
     @Temporal(value = TemporalType.TIMESTAMP)
@@ -66,8 +67,8 @@ public class User {
         this.emailAddress = emailAddress;
         this.password = "";
         this.joined = new Date();
-        this.imageURL = "www.davidexxx.com/peen/nude.jpg";
-        this.userBadge = "www.google.com";
+        this.imageURL = "";
+        this.userBadge = "";
         this.moderationFlag = false;
         this.lastLogin = new Date();
         this.version = 0L;

@@ -19,7 +19,6 @@ export default class User extends React.PureComponent{
                 <td>{this.props.user.entity.firstName}</td>
                 <td>{this.props.user.entity.lastName}</td>
                 <td>{this.props.user.entity.emailAddress}</td>
-                <td>{this.props.user.entity.educationalInstitution}</td>
                 <td>
                     <UpdateDialog user={this.props.user}
                                   attributes={this.props.attributes}

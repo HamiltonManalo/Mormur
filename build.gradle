@@ -13,7 +13,9 @@ description = """mormur"""
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-
+configurations {
+    all*.exclude group: 'javassist', module: 'javassist' // get rid of hibernate-incompatible javassist
+}
 
 repositories {
      mavenCentral()
@@ -24,6 +26,8 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version:'2.0.5.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version:'2.0.5.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'2.0.5.RELEASE'
+//    provided "org.projectlombok:lombok:1.16.16"
+    annotationProcessor "org.projectlombok:lombok:1.16.16"
     compile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.0.5.RELEASE') {
 exclude(module: 'commons-logging')
     }

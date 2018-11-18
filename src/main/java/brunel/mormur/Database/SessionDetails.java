@@ -1,14 +1,18 @@
 package brunel.mormur.Database;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Data
-@Table(name = "Events")
+@Table(name = "Sessions")
 @Entity
 public class SessionDetails {
 
@@ -17,31 +21,43 @@ public class SessionDetails {
     @GeneratedValue(strategy =  GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "host")
-    private Long hostId;
+
+//    @Column(name = "host")
+    @ManyToOne(targetEntity = User.class)
+    @JsonBackReference
+    private User host;
 
     @Column(name = "title")
     private String title;
 
-    @OneToMany(targetEntity = Question.class)
-    List<Question> replies;
+    @Column(name = "startTime")
+    @Temporal(value = TemporalType.TIMESTAMP)
+    private Date startTime;
+
+    @Column(name = "endTime")
+    @Temporal(value = TemporalType.TIMESTAMP)
+    private Date endTime;
+
+    @OneToMany(targetEntity = Question.class, fetch = FetchType.LAZY)
+    @JsonBackReference
+    List<Question> questions;
 
     @Version @JsonIgnore
     private Long version;
 
 
-    public SessionDetails() {
-
-    }
+    public SessionDetails() {    }
 
     public SessionDetails(String title) {
         this.title = title;
         this.version = 1L;
     }
 
-    public SessionDetails(String title, Long hostId, Long version) {
+    public SessionDetails(String title, User host, Date start, Date end) {
         this.title = title;
-        this.hostId = hostId;
-        this.version = version;
+        this.host = host;
+        this.startTime = start;
+        this.endTime = end;
+        this.version = 1L;
     }
 }

@@ -1,7 +1,10 @@
 package brunel.mormur.Database;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import brunel.DTO.QuestionDTO;
+import com.fasterxml.jackson.annotation.*;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,7 +13,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "Question")
+@Table(name = "Questions")
 @Data
 public class Question {
 
@@ -20,10 +23,10 @@ public class Question {
     private Long id;
 
     @JoinColumn(name = "LinkedQuestionID")
-    @OneToOne(targetEntity = Question.class, cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = Question.class)
     private Long linkedQuestionIds;
 
-    @OneToOne(targetEntity = User.class, cascade=CascadeType.ALL)
+    @OneToOne(targetEntity = User.class)
     @JoinColumn(name = "ParticipantID")
     private User participant;
 
@@ -41,8 +44,11 @@ public class Question {
     @Column(name = "DateModified")
     private Date dateUpdated;
 
-    @OneToOne(targetEntity = SessionDetails.class, cascade=CascadeType.ALL)
-    @JoinColumn(name = "SessionDetails")
+    @ManyToOne(targetEntity = SessionDetails.class)
+//    @JoinColumn(name = "SessionDetails")
+    @JsonManagedReference
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @Getter(AccessLevel.NONE)
     private SessionDetails session;
 
     @ElementCollection(targetClass=Integer.class)
@@ -66,7 +72,7 @@ public class Question {
         this.version = 0L;
         }
     public Question(User participant, String questionText, Date dateCreated, Date dateUpdated, SessionDetails session) {
-        this.linkedQuestionIds = 0L;
+        this.linkedQuestionIds = null;
         this.participant = participant;
         this.questionText = questionText;
         this.hashTags = null;
@@ -75,6 +81,14 @@ public class Question {
         this.session = session;
         this.userIDLikeList = null;
         this.version = 0L;
+    }
+
+    public Question(QuestionDTO dto, SessionDetails session, User user) {
+        this.participant = user;
+        this.session = session;
+        this.hashTags = dto.getHashTags();
+        this.questionText = dto.getQuestionText();
+        this.dateCreated = new Date();
     }
 
 

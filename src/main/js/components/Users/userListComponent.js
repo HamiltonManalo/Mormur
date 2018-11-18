@@ -72,7 +72,6 @@ export default class UserList extends React.PureComponent {
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Email</th>
-                        <th>EducationalInst</th>
                         <th></th>
                     </tr>
                     {users}

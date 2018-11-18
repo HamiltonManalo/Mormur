@@ -3,6 +3,7 @@ package brunel.mormur.controllers;
 import brunel.mormur.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
@@ -17,8 +18,11 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping(value = "/userview")
+    @RequestMapping(value = "/userview", method = RequestMethod.GET)
     public String userview() {
         return "index";
     }
+
+//    @RequestMapping(value = "/session/*")
+//    public String session() { return "index"; }
 }

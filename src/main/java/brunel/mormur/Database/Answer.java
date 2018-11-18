@@ -35,11 +35,11 @@ public class Answer {
     @Column(name = "DateModified")
     private Date dateModified;
 
-    @OneToOne(targetEntity = Question.class, cascade=CascadeType.ALL)
+    @OneToOne(targetEntity = Question.class)
     @JoinColumn(name = "QuestionID")
     private Question questionLink;
 
-    @OneToOne(targetEntity = User.class, cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = User.class)
     @JoinColumn(name = "UserID")
     private User user;
 
