@@ -14,14 +14,16 @@ export default class SessionList extends React.PureComponent {
 
     render() {
         let Sessions = this.props.events.map(event =>
+           
             <Session key={event.entity._links.self.href}
                   event={event}
-                  attributes={this.props.attributes}
                   onUpdate={this.props.onUpdate}
                   onDelete={this.props.onDelete}
                   onJoin={this.props.onJoin}
             />
         );
+        console.log("Sessions")
+        console.dir(this.props.events)
         let navLinks = [];
         if("first" in this.props.links) {
             navLinks.push(<button className='navigate' key="first" onClick={this.handleNavFirst}> &lt;&lt;</button>);
@@ -37,6 +39,7 @@ export default class SessionList extends React.PureComponent {
         }
 
         return (
+            
             <div className="listview">
                 <input ref="pageSize" defaultValue={this.props.pageSize} onInput={this.handleInput}/>
                 <table>

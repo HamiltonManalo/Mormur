@@ -43,15 +43,25 @@ body {
 
 /* BANNER */
 
-.banner {
+.header {
     position: fixed;
     top: 0;
+    left: 0; 
     width: 100%;
-    height: 60px;
+    height: 100px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    justify-content: baseline;
     z-index: 100;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.banner {
+    /* position: fixed; */
+    top: 0; 
+    left: 0; 
+    height: 60%;
+    width: 100%;
     background-color: #A0C8A0;
 }
 
@@ -66,18 +76,84 @@ body {
     display: flex;
 }
 
-td, th {
-    border: 1px solid #999;
-    padding: 0.5rem;
-    text-align: left;
+.navbar {
+    /* left: 60px; */
+    /* top: 10px; */
+    display: flex;
+    align-self: center;
+    justify-content: flex-start;
+    align-content: space-around;
+    align-items: center;
+    /* float: right; */
+    position: relative;
+    /* z-index: 100; */
 }
-input.field {
-    width: 90%;
+
+.navbar > div {
+    display: inline;
 }
+
+.navelement {
+    border: 0px;
+    border: 10px;
+    border-style: none;
+    padding-right: 5px;
+
+}
+.navbutton {
+    background-color: #E5E9F2;
+    padding: 0px 2px 0px 2px;
+    color: #999;
+    padding: 2px;
+    border: 0px hidden;
+    font-family: Lato;
+    box-shadow: 2px 2px 0px 0px rgba(175, 175, 175, .30);
+
+}
+.navbutton:hover {
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color .50s ease;
+    color: #888;
+    background-color: #FFF;
+
+}
+.navbutton:focus {
+    outline: transparent;
+}
+
+/* List view styles */
 
 .listview {
     /* display: inherit; */
     padding: inherit;
+}
+
+input.field {
+    width: 90%;
+}
+
+
+
+
+/* List styles */
+td, th, table {
+    border: 1px solid #999;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.maincontainer {
+    background-color: #DCDCC8;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px; 
+    padding: 30px 30px;
+    margin-top: 60px;
 }
 
 .listview > table {
@@ -92,9 +168,7 @@ table tr:last-child td:first-child {
 table tr:last-child td:last-child {
     border-bottom-right-radius: 10px;
 }
-td, th {
-    /* border: none; */
-}
+
 table {
     margin: 5px;
     box-shadow: 0 0 0 1px #666;
@@ -104,27 +178,7 @@ table {
     /* padding: 0.5rem; */
     text-align: left;
 }
-body {
-    margin: 0;
-    padding: 0;
-}
 
-
-/* List Pages */
-.maincontainer {
-    background-color: #DCDCC8;
-    display: flex;
-    height: 100%;
-    width: 100%;
-    align-content: center;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 10px; 
-    padding: 30px 30px;
-    margin-top: 60px;
-    /* left:20%; */
-    /* position: absolute; */
-}
 
 /*Classes for creating dialogs*/
 
@@ -273,39 +327,7 @@ button.navigate {
     background-color: #F95F62;
 }
 
-#navbar {
-    right: 60px;
-    top: 10px;
-    display: flex;
-    float: right;
-    position: absolute;
-}
 
-#navbar > div {
-    display: inline;
-}
-
-.navelement {
-    border: 0px;
-    padding: 10px;
-
-}
-.navbutton {
-    background-color: #A0C8A0;
-    color: white;
-    padding: 2px;
-    border: 0px hidden;
-    font-family: Lato;
-
-}
-.navbutton:hover {
-    cursor: pointer;
-    background-color: transparent;
-
-}
-.navbutton:focus {
-    outline: transparent;
-}
 
 .createbtn {
     background-color: #13CE66;
