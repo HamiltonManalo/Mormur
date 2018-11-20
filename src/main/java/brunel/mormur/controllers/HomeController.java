@@ -23,6 +23,6 @@ public class HomeController {
         return "index";
     }
 
-//    @RequestMapping(value = "/session/*")
-//    public String session() { return "index"; }
+    @RequestMapping(value = "/session/**")
+    public String session() { return "index"; }
 }

@@ -147,22 +147,22 @@ export default class SessionView extends React.Component {
     render() {
         return (
 
-            <div>
-                <h2> Available Sessions </h2>
-                <div className='maincontainer'>
-                    <SessionList events={this.state.events}
-                              links={this.state.links}
-                              pageSize={this.state.pageSize}
-                              attributes={this.state.attributes}
-                              onNavigate={this.onNavigate}
-                              onUpdate={this.onUpdate}
-                              onDelete={this.onDelete}
-                              onJoin={this.onJoin}
-                              updatePageSize={this.updatePageSize}/>
-                </div>
-                    <div>
-                            <CreateDialog className='test' attributes={this.state.attributes} onCreate={this.onCreate}/>
-                    </div>
+            <div className='maincontainer'>
+                <h2>Available Sessions</h2>
+                
+                <SessionList events={this.state.events}
+                            links={this.state.links}
+                            pageSize={this.state.pageSize}
+                            attributes={this.state.attributes}
+                            onNavigate={this.onNavigate}
+                            onUpdate={this.onUpdate}
+                            onDelete={this.onDelete}
+                            onJoin={this.onJoin}
+                            updatePageSize={this.updatePageSize}/>
+                
+                <CreateDialog className='test' 
+                                attributes={this.state.attributes} 
+                                onCreate={this.onCreate}/>
             </div>
         )
     }

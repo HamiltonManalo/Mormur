@@ -20,33 +20,29 @@ public class SessionController {
         this.questionRepoistory = questionRepository;
     }
 
-//    @GetMapping("/{")
-
     @PostMapping("/api/session/questions")
     public QuestionDTO addNewQuestion(@RequestBody QuestionDTO question)  {
-        System.out.println(question.toString());
+        //Query user and session to link the SQL relationships. Optional is a Java data type (wrapper) that can hold a value or null which
+        //Requires you to use the .get() or "OrElse" method to get the object.
         Optional<User> user = userRepository.findById(question.getParticipantId());
         Optional<SessionDetails> session = sessionRepository.findById(question.getSessionId());
+        //Validate data was received and print a message if it wasn't
         if(!user.isPresent()) {
             System.out.println("User for new question in Session " + question.getSessionId() + " with userID " + question.getParticipantId() + " does not exist");
         }
         if(!session.isPresent()) {
             System.out.println("Session " + question.getSessionId() + " Does not exist for question submitted by userId " + question.getParticipantId());
         }
-        Question newQuestion = new Question(question, session.get(), user.get());
-        try {
 
+        //Custom constructor was made to make this easier. Make new question and create relationships
+        Question newQuestion = new Question(question, session.get(), user.get());
+        //Save question to DB, the .save method returns a copy of the value that was saved.
         newQuestion = questionRepoistory.save(newQuestion);
-        } catch (Exception E) {
-            E.printStackTrace();
-        }
-        System.out.println("New Question " + newQuestion.toString());
+        //Add the method to the sessions question list, then save the session.
+        session.get().getQuestions().add(newQuestion);
+        sessionRepository.save(session.get());
+
         return question;
     }
-//    @GetMapping("/{sessionId}/questions")
-//    public List<Question> all(@PathVariable long sessionId) {
-//        List<Question> questions = questionRepoistory.queryQuestionsBySession_Id(sessionId);
-//
-//        return questions;
-//    }
+
 }

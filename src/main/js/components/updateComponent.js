@@ -20,7 +20,7 @@ export default class UpdateDialog extends React.PureComponent {
     render() {
         let inputs = this.props.attributes.map(attribute =>
             <p key={attribute}>
-                <input type="text"placeholder={attribute} defaultValue={this.props.user.entity[attribute]}
+                <input type="text" placeholder={attribute} defaultValue={this.props.user.entity[attribute]}
                        ref={attribute} className="field"/>
             </p>
 

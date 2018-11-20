@@ -33,8 +33,8 @@ public class SessionLoader implements CommandLineRunner {
         SessionDetails s2 = new SessionDetails("Chewing with Grace, with Larry", user2, new Date(), new Date());
         s1 = sessionRepository.save(s1);
         s2 = sessionRepository.save(s2);
-        Question q1 = new Question(user1, "Oh say can you see", new Date(), new Date(), s1);
-        Question q2 = new Question(user2, "by dawns early light", new Date(), new Date(), s1);
+        Question q1 = new Question(user1, "Why is programming hard?", new Date(), new Date(), s1);
+        Question q2 = new Question(user2, "Theres so many frameworks and programming languages, why cant?", new Date(), new Date(), s1);
         q1 = questionRepository.save(q1);
         q2 = questionRepository.save(q2);
         s1.setQuestions(new ArrayList<>());

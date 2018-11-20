@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 import when from 'when';
 import {
     BrowserRouter as Router,
     Route,
-    Link, Switch
-} from 'react-router-dom'
+    Switch
+} from 'react-router-dom';
 
 const follow = require('./follow');
 const root = '/api';
@@ -70,16 +70,16 @@ class App extends React.Component {
     render() {
         return (
             <div>
-
-                <div>
-                    <Header/>
-                {/*{Routes}*/}
-                <Switch>
-                    <Route exact path="/" component={Home}/>
-                    <Route exact path="/sessionview" component={SessionView}/>
-                    <Route exact path="/userview" component={UserView}/>
-                    <Route path="/session/" component={SessionDetailsView}/>
-                </Switch>
+                <Header/>
+                <div className="app">
+                    <div className="page">
+                            <Switch>
+                                <Route exact path="/" component={Home}/>
+                                <Route exact path="/sessionview" component={SessionView}/>
+                                <Route exact path="/userview" component={UserView}/>
+                                <Route path="/session/:id" component={SessionDetailsView}/>
+                            </Switch>
+                    </div>
                 </div>
             </div>
         )
@@ -97,5 +97,5 @@ ReactDOM.render(
     <Router>
     <App />
     </Router>,
-    document.getElementById('react')
+    document.getElementById('root')
 );

@@ -73,6 +73,8 @@ export default class UserList extends React.PureComponent {
                         <th>Last Name</th>
                         <th>Email</th>
                         <th></th>
+                        <th></th>
+                        <th></th>
                     </tr>
                     {users}
                     </tbody>
