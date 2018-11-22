@@ -41,6 +41,7 @@ export default class UpdateDialog extends React.PureComponent {
                             {inputs}
                             <button className='edit' onClick={this.handleSubmit}>Update</button>
                         </form>
+                        
                     </div>
                 </div>
             </div>

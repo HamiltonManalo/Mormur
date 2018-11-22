@@ -21,8 +21,6 @@ public class SessionDetails {
     @GeneratedValue(strategy =  GenerationType.AUTO)
     private Long id;
 
-
-//    @Column(name = "host")
     @ManyToOne(targetEntity = User.class)
     @JsonBackReference
     private User host;
@@ -44,7 +42,6 @@ public class SessionDetails {
 
     @Version @JsonIgnore
     private Long version;
-
 
     public SessionDetails() {    }
 

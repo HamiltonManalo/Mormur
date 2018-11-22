@@ -47,7 +47,6 @@ public class Question {
     private Date dateUpdated;
 
     @ManyToOne(targetEntity = SessionDetails.class)
-//    @JoinColumn(name = "SessionDetails")
     @JsonManagedReference
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     private SessionDetails session;

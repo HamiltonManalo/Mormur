@@ -73,12 +73,6 @@ public class User {
         this.lastLogin = new Date();
         this.version = 0L;
     }
-//    public User(String firstName, String lastName, String emailAddress, long version) {
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.emailAddress = emailAddress;
-//        this.version = version;
-//    }
 
     public User(String firstName, String lastName, String emailAddress, String password, Date joined, String imageURL, String userBadge, boolean moderationFlag, Date lastLogin) {
         this.firstName = firstName;

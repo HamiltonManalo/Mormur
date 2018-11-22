@@ -9,4 +9,5 @@ import java.util.List;
 public interface IQuestionRepository extends JpaRepository<Question, Long> {
 
       List<Question> queryQuestionsBySession_Id(long sessionId);
+
 }

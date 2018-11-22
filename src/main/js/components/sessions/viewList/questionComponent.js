@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 export default class Question extends React.PureComponent {
     constructor(props) {
         // console.log("Question Props")
@@ -18,8 +17,7 @@ export default class Question extends React.PureComponent {
     }
 
     render() {
-        // console.log("Props from question")
-        // console.dir(this.props.userId)
+
         return (
                 <tr>
                     <td>{this.state.user.firstName}</td>

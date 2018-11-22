@@ -12,14 +12,8 @@ export default class SessionView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {events: [], attributes: [], pageSize: 10, links: {}};
-        // this.updatePageSize = this.updatePageSize.bind(this);
-        // this.onCreate = this.onCreate.bind(this);
-        // this.onUpdate = this.onUpdate.bind(this);
-        // this.onDelete = this.onDelete.bind(this);
-        // this.onNavigate = this.onNavigate.bind(this);
-        // this.onJoin = this.onJoin.bind(this);
-        // this.loadFromServer = this.loadFromServer.bind(this);
     }
+
     componentWillMount(){
         client({
             method: 'GET',
@@ -28,6 +22,7 @@ export default class SessionView extends React.Component {
             this.loadFromServer(this.state.pageSize);
         });
     }
+
     loadFromServer(pageSize) {
         follow(client, root, [
             {rel: 'sessionDetailses', params: {size: pageSize}}]
@@ -99,6 +94,7 @@ export default class SessionView extends React.Component {
             }
         });
     }
+    
     onDelete(event) {
         client({method: 'DELETE', path: event.entity._links.self.href}).done(response => {
             this.loadFromServer(this.state.pageSize)
@@ -144,6 +140,7 @@ export default class SessionView extends React.Component {
             this.loadFromServer(pageSize);
         }
     }
+
     render() {
         return (
 

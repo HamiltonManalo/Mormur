@@ -41,7 +41,5 @@ public class SessionLoader implements CommandLineRunner {
         s1.getQuestions().add(q1);
         s1.getQuestions().add(q2);
         sessionRepository.save(s1);
-
-
     }
 }

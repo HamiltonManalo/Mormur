@@ -22,8 +22,7 @@ export default class SessionList extends React.PureComponent {
                   onJoin={this.props.onJoin}
             />
         );
-        console.log("Sessions")
-        console.dir(this.props.events)
+        
         let navLinks = [];
         if("first" in this.props.links) {
             navLinks.push(<button className='navigate' key="first" onClick={this.handleNavFirst}> &lt;&lt;</button>);

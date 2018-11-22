@@ -13,6 +13,7 @@ export default class SessionDetailsView extends React.PureComponent {
         }
         this.SubmitQuestion = this.SubmitQuestion.bind(this);
     }
+    
     render() {
         let sessionQuestions = this.state.questions.map(question =>
             <Question key={question.self}

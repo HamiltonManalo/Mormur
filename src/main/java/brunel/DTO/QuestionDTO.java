@@ -9,12 +9,11 @@ public class QuestionDTO {
 
     private QuestionDTO() {}
 
-        private Long participantId;
+    private Long participantId;
 
-        private String questionText;
+    private String questionText;
 
-        private ArrayList<String> hashTags;
+    private ArrayList<String> hashTags;
 
-        private Long sessionId;
-
-    }
+    private Long sessionId;
+}
