@@ -2,9 +2,7 @@ package brunel.mormur.Database;
 
 import brunel.DTO.QuestionDTO;
 import com.fasterxml.jackson.annotation.*;
-import lombok.AccessLevel;
 import lombok.Data;
-import lombok.Getter;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -16,7 +14,7 @@ import java.util.List;
 @Entity
 @Table(name = "Questions")
 @Data
-@ToString(exclude = "session")
+@ToString(exclude = "QARoom")
 public class Question {
 
     @Id
@@ -46,10 +44,10 @@ public class Question {
     @Column(name = "DateModified")
     private Date dateUpdated;
 
-    @ManyToOne(targetEntity = SessionDetails.class)
+    @ManyToOne(targetEntity = QARoom.class)
     @JsonManagedReference
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-    private SessionDetails session;
+    private QARoom session;
 
     @ElementCollection(targetClass=Integer.class)
     @Column(name = "userIDLikeList")
@@ -60,7 +58,7 @@ public class Question {
 
     private Question() {}
 
-    public Question(Long linkedQuestionIds, User participant, String questionText, ArrayList<String> hashTags, Date dateCreated, Date dateUpdated, SessionDetails session, List<Integer> userIDLikeList) {
+    public Question(Long linkedQuestionIds, User participant, String questionText, ArrayList<String> hashTags, Date dateCreated, Date dateUpdated, QARoom session, List<Integer> userIDLikeList) {
         this.linkedQuestionIds = linkedQuestionIds;
         this.participant = participant;
         this.questionText = questionText;
@@ -71,7 +69,7 @@ public class Question {
         this.userIDLikeList = userIDLikeList;
         this.version = 0L;
         }
-    public Question(User participant, String questionText, Date dateCreated, Date dateUpdated, SessionDetails session) {
+    public Question(User participant, String questionText, Date dateCreated, Date dateUpdated, QARoom session) {
         this.linkedQuestionIds = null;
         this.participant = participant;
         this.questionText = questionText;
@@ -83,7 +81,7 @@ public class Question {
         this.version = 0L;
     }
 
-    public Question(QuestionDTO dto, SessionDetails session, User user) {
+    public Question(QuestionDTO dto, QARoom session, User user) {
         this.participant = user;
         this.session = session;
         this.hashTags = dto.getHashTags();

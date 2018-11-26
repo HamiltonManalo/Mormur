@@ -96,8 +96,9 @@ export default class SessionDetailsView extends React.PureComponent {
         let text = this.state.questionTextValue;
         //Logic for split needs to be improved for edge cases like #yolo#hashtag
         let hashtags = this.state.questionHashTags.split(" ");
+
         if(text.length < 1) return;
-        console.log("event value " + text)
+
         let bodyObject = {
             participantId: 1,
             questionText: text,
@@ -114,6 +115,6 @@ export default class SessionDetailsView extends React.PureComponent {
         }
         fetch("http://localhost:8080/api/session/questions", options)
         .then(response => response.json())
-        .then(data => {console.dir(data)});
+        .then(data => {setInterval(() => {}, 250)});
     }
 }
