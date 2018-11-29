@@ -16,7 +16,7 @@ Luckily, this guide is here to help you through that process and if you follow i
 
 3. Once you've hooked up your preferred version control - whether that is VCS in Intelli J, Commandline Git, or SourceTree pull the repository to your PC
 
-4. In your commandline of choice navigate to your Mormur folder. The team has typically stored it in a root folder of the drive, IE C:/Mormur or D:/Mormur and then run "npm run-script watch webpack.config.js"
+4. In your commandline of choice navigate to your Mormur folder. The team has typically stored it in a root folder of the drive, IE C:/Mormur or D:/Mormur and then run `npm update` followed by `npm run-script watch webpack.config.js`
 
 5. Open up Intelli J and select the Mormor folder from your chosen location and import the project as a "Gradle" project. Once it starts opening you should see a bar at the bottom of the screen showing dependencies downloading. You're almost done! 
 
@@ -25,7 +25,9 @@ Luckily, this guide is here to help you through that process and if you follow i
 You should now be ready to start coding! check our trello board and jump on a story! 
 
 ####Some new dev tips! 
-* Pull from github everyday and merge master into your branch. On SourceTree this can be achieved by switching to master and pulling, then hop back onto your branch, right click on master and choose to 
+* Pull from github everyday and merge master into your branch. On SourceTree this can be achieved by switching to master and pulling, then hop back onto your branch, right click on master and choose to "Merge master onto current branch" 
+* Always start a new branch before you start coding! We do not accept pull requests from master. ever. seriously. 
+* Stackoverflow has EVERYTHING they didn't teach you in school.
 
 ### Source Control
 Your parents have probably never spoken to you about the vital need to practice strong source control. Your friends may say "**MERGE TO MAIN** man, its cool"
@@ -66,7 +68,9 @@ In order to transpile React into vanilla JS A webpack build needs to be run via 
 * Promises - Async programming in JS
   * These are used in JS to handle network requests
 * ReactJS
-
+* Flex CSS 
+* JPA for database access
+* RESTful API's
 
 ### BUILD PROCESS
 Currently the project is built through the *Gradle* build tool. What does a build tool do? 
@@ -75,10 +79,10 @@ Currently the project is built through the *Gradle* build tool. What does a buil
    * Once added to your path you can execute a build by running this command in the directory containing your *gradle.build* file "gradle bootRun" 
    * After running the command you should see a message like
 
-            `<2018-06-23 17:47:11.257 INFO 24116 --- [ main] brunel.mormur.mormurMain : Started mormurMain in 7.239 seconds (JVM running for 57.778)>`
+  `<2018-06-23 17:47:11.257 INFO 24116 --- [ main] brunel.mormur.mormurMain : Started mormurMain in 7.239 seconds (JVM running for 57.778)>` <br>
    *This means your server is now running and you can reach the home page by launching your browser to "Localhost:8080"*          
    
- * In another terminal window you will need to run the npm watch command
+ * In another terminal window you will need to run the npm watch command. <br>
  `npm run-script watch webpack.config.js` <br>
  This will cause node to rebuild the react files any time a change is made.
 
