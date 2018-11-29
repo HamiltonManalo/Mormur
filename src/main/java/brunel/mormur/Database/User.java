@@ -6,6 +6,7 @@ import brunel.mormur.*;
 import brunel.mormur.controllers.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -34,7 +35,7 @@ public class User {
 
     @Temporal(value = TemporalType.TIMESTAMP)
     @Column(name = "Joined")
-    private Date joined;
+    private LocalDateTime joined;
 
     @Column(name = "ImageURL")
     private String imageURL;
@@ -47,7 +48,7 @@ public class User {
 
     @Temporal(value = TemporalType.TIMESTAMP)
     @Column(name = "LastLogin")
-    private Date lastLogin;
+    private LocalDateTime lastLogin;
 
 //    @Column(name = "isExpert")
 //
@@ -66,15 +67,15 @@ public class User {
         this.lastName = lastName;
         this.emailAddress = emailAddress;
         this.password = "";
-        this.joined = new Date();
+        this.joined = LocalDateTime.now();
         this.imageURL = "";
         this.userBadge = "";
         this.moderationFlag = false;
-        this.lastLogin = new Date();
+        this.lastLogin = LocalDateTime.now();
         this.version = 0L;
     }
 
-    public User(String firstName, String lastName, String emailAddress, String password, Date joined, String imageURL, String userBadge, boolean moderationFlag, Date lastLogin) {
+    public User(String firstName, String lastName, String emailAddress, String password, LocalDateTime joined, String imageURL, String userBadge, boolean moderationFlag, LocalDateTime lastLogin) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
