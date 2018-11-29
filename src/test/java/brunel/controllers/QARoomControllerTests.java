@@ -15,12 +15,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.StreamSupport;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @SpringBootTest(classes = {mormurMain.class})
-public class SessionControllerTests {
+public class QARoomControllerTests {
 
     @Autowired
     private TestEntityManager entityManager;
@@ -34,7 +33,7 @@ public class SessionControllerTests {
     public void start() throws Exception
     {
 //        User u1 = new User("Frodo", "Baggins", "ring bearer");
-//        SessionDetails ev = new SessionDetails("Ted Talks with Ted");
+//        QARoom ev = new QARoom("Ted Talks with Ted");
 //        Date d1 = new Date();
 //        Date d2 = new Date();
 //        Question q = new Question(u1, "Testttt", d1, d2, ev);
@@ -43,7 +42,7 @@ public class SessionControllerTests {
     @Test
     public void findQuestionsBySession_Test() {
         User u1 = new User("Frodo", "Baggins", "ring bearer");
-        SessionDetails ev = new SessionDetails("Ted Talks with Ted");
+        QARoom ev = new QARoom("Ted Talks with Ted");
         Date d1 = new Date();
         Date d2 = new Date();
         List<Question> q = new ArrayList<Question>();
@@ -57,7 +56,7 @@ public class SessionControllerTests {
         long sessionIdToFindby = 3;
         System.out.println("HEERRREE ");
         q = null;
-        q = repository.queryQuestionsBySession_Id(sessionIdToFindby);
+        q = repository.queryQuestionsByRoom_Id(sessionIdToFindby);
         for(Question x : q) {
             System.out.println("Printing questions found " + x.getQuestionText());
         }

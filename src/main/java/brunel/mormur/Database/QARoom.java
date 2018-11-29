@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 @Table(name = "Sessions")
 @Entity
-public class SessionDetails {
+public class QARoom {
 
     @Id
     @Column(name = "SessionId")
@@ -43,14 +43,14 @@ public class SessionDetails {
     @Version @JsonIgnore
     private Long version;
 
-    public SessionDetails() {    }
+    public QARoom() {    }
 
-    public SessionDetails(String title) {
+    public QARoom(String title) {
         this.title = title;
         this.version = 1L;
     }
 
-    public SessionDetails(String title, User host, Date start, Date end) {
+    public QARoom(String title, User host, Date start, Date end) {
         this.title = title;
         this.host = host;
         this.startTime = start;

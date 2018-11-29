@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.Date;
 
 @Component
-public class SessionLoader implements CommandLineRunner {
+public class QARoomLoader implements CommandLineRunner {
 
-    private final ISessionRepository sessionRepository;
+    private final IQARoomRepository sessionRepository;
     private final IQuestionRepository questionRepository;
     private final IUserRepository userRepository;
     @Autowired
-    public SessionLoader(ISessionRepository sessionRepository, IQuestionRepository questionRepository, IUserRepository userRepository) {
+    public QARoomLoader(IQARoomRepository sessionRepository, IQuestionRepository questionRepository, IUserRepository userRepository) {
 
         this.sessionRepository = sessionRepository;
         this.questionRepository = questionRepository;
@@ -29,17 +29,17 @@ public class SessionLoader implements CommandLineRunner {
         User user2 = new User("Larry", "Charleston", "Larry@charlestonschews.com");
         user1 = userRepository.save(user1);
         user2 = userRepository.save(user2);
-        SessionDetails s1 = new SessionDetails("Ted Talks with Ted", user1, new Date(), new Date());
-        SessionDetails s2 = new SessionDetails("Chewing with Grace, with Larry", user2, new Date(), new Date());
-        s1 = sessionRepository.save(s1);
-        s2 = sessionRepository.save(s2);
-        Question q1 = new Question(user1, "Why is programming hard?", new Date(), new Date(), s1);
-        Question q2 = new Question(user2, "Theres so many frameworks and programming languages, why cant?", new Date(), new Date(), s1);
+        QARoom r1 = new QARoom("Ted Talks with Ted", user1, new Date(), new Date());
+        QARoom r2 = new QARoom("Chewing with Grace, with Larry", user2, new Date(), new Date());
+        r1 = sessionRepository.save(r1);
+        r2 = sessionRepository.save(r2);
+        Question q1 = new Question(user1, "Why is programming hard?", new Date(), new Date(), r1);
+        Question q2 = new Question(user2, "Theres so many frameworks and programming languages, why cant?", new Date(), new Date(), r1);
         q1 = questionRepository.save(q1);
         q2 = questionRepository.save(q2);
-        s1.setQuestions(new ArrayList<>());
-        s1.getQuestions().add(q1);
-        s1.getQuestions().add(q2);
-        sessionRepository.save(s1);
+        r1.setQuestions(new ArrayList<>());
+        r1.getQuestions().add(q1);
+        r1.getQuestions().add(q2);
+        sessionRepository.save(r1);
     }
 }

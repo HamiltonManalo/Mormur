@@ -18,7 +18,7 @@ import java.util.Date;
         {
             //To test the columns of the repository
             User u1 = new User("Frodo", "Baggins", "ring bearer");
-//            SessionDetails ev = new SessionDetails(2, "Ted", "Ted Talks with Ted", new Date(), new Date(), "Vanity");
+//            QARoom ev = new QARoom(2, "Ted", "Ted Talks with Ted", new Date(), new Date(), "Vanity");
 
             Date d1 = new Date();
 
