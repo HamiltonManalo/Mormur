@@ -4,7 +4,7 @@ import client from "../../client";
 import follow from "../../follow";
 import when from "when";
 import CreateDialog from "../createComponent";
-import SessionList from "../events/sessionListComponent";
+import SessionList from "./sessionListComponent";
 
 const root = '/api';
 
@@ -12,14 +12,8 @@ export default class SessionView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {events: [], attributes: [], pageSize: 10, links: {}};
-        // this.updatePageSize = this.updatePageSize.bind(this);
-        // this.onCreate = this.onCreate.bind(this);
-        // this.onUpdate = this.onUpdate.bind(this);
-        // this.onDelete = this.onDelete.bind(this);
-        // this.onNavigate = this.onNavigate.bind(this);
-        // this.onJoin = this.onJoin.bind(this);
-        // this.loadFromServer = this.loadFromServer.bind(this);
     }
+
     componentWillMount(){
         client({
             method: 'GET',
@@ -28,9 +22,10 @@ export default class SessionView extends React.Component {
             this.loadFromServer(this.state.pageSize);
         });
     }
+
     loadFromServer(pageSize) {
         follow(client, root, [
-            {rel: 'events', params: {size: pageSize}}]
+            {rel: 'qARooms', params: {size: pageSize}}]
         ).then(eventCollections => {
             return client({
                 method: 'GET',
@@ -42,7 +37,7 @@ export default class SessionView extends React.Component {
                 return eventCollections;
             });
         }).then(eventCollection => {
-            return eventCollection.entity._embedded.events.map(event =>
+            return eventCollection.entity._embedded.qARooms.map(event =>
                 client({
                     method: 'GET',
                     path: event._links.self.href
@@ -62,7 +57,7 @@ export default class SessionView extends React.Component {
 
     onCreate(newEvent) {
         let self = this;
-        follow(client, root, ['events']).then(response => {
+        follow(client, root, ['qARooms']).then(response => {
             return client({
                 method: 'POST',
                 path: response.entity._links.self.href,
@@ -71,7 +66,7 @@ export default class SessionView extends React.Component {
             })
         }).then(response => {
             return follow(client, root,
-                [{rel: 'events', params: {'size': self.state.pageSize}}]);
+                [{rel: 'qARooms', params: {'size': self.state.pageSize}}]);
         }).done(response => {
             if(typeof response.entity._links.last != "undefined") {
                 this.onNavigate(response.entity._links.last.href);
@@ -99,6 +94,7 @@ export default class SessionView extends React.Component {
             }
         });
     }
+    
     onDelete(event) {
         client({method: 'DELETE', path: event.entity._links.self.href}).done(response => {
             this.loadFromServer(this.state.pageSize)
@@ -128,6 +124,8 @@ export default class SessionView extends React.Component {
         }).then(eventPromises => {
             return when.all(eventPromises)
         }).done(events => {
+            console.log("Printing API call")
+            console.dir(events)
             this.setState({
                 events: events,
                 attributes: Object.keys(this.schema.properties),
@@ -142,26 +140,26 @@ export default class SessionView extends React.Component {
             this.loadFromServer(pageSize);
         }
     }
+
     render() {
-        console.log("Render called events")
         return (
 
-            <div>
-                <h2> Available Sessions </h2>
-                <div className='maincontainer'>
-                    <SessionList events={this.state.events}
-                              links={this.state.links}
-                              pageSize={this.state.pageSize}
-                              attributes={this.state.attributes}
-                              onNavigate={this.onNavigate}
-                              onUpdate={this.onUpdate}
-                              onDelete={this.onDelete}
-                              onJoin={this.onJoin}
-                              updatePageSize={this.updatePageSize}/>
-                </div>
-                    <div>
-                            <CreateDialog className='test' attributes={this.state.attributes} onCreate={this.onCreate}/>
-                    </div>
+            <div className='maincontainer'>
+                <h2>Available Sessions</h2>
+                
+                <SessionList events={this.state.events}
+                            links={this.state.links}
+                            pageSize={this.state.pageSize}
+                            attributes={this.state.attributes}
+                            onNavigate={this.onNavigate}
+                            onUpdate={this.onUpdate}
+                            onDelete={this.onDelete}
+                            onJoin={this.onJoin}
+                            updatePageSize={this.updatePageSize}/>
+                
+                <CreateDialog className='test' 
+                                attributes={this.state.attributes} 
+                                onCreate={this.onCreate}/>
             </div>
         )
     }

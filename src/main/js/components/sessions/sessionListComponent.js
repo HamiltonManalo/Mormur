@@ -11,6 +11,54 @@ export default class SessionList extends React.PureComponent {
         this.handleNavLast = this.handleNavLast.bind(this);
         this.handleInput = this.handleInput.bind(this);
     }
+
+    render() {
+        let Sessions = this.props.events.map(event =>
+           
+            <Session key={event.entity._links.self.href}
+                  event={event}
+                  onUpdate={this.props.onUpdate}
+                  onDelete={this.props.onDelete}
+                  onJoin={this.props.onJoin}
+            />
+        );
+        
+        let navLinks = [];
+        if("first" in this.props.links) {
+            navLinks.push(<button className='navigate' key="first" onClick={this.handleNavFirst}> &lt;&lt;</button>);
+        }
+        if("prev" in this.props.links) {
+            navLinks.push(<button className='navigate' key="prev" onClick={this.handleNavPrev}>&lt; </button>);
+        }
+        if("next" in this.props.links) {
+            navLinks.push(<button className='navigate' key="next" onClick ={this.handleNavNext}> &gt; </button>);
+        }
+        if("last" in this.props.links) {
+            navLinks.push(<button className='navigate' key="last" onClick={this.handleNavLast}> &gt;&gt; </button>);
+        }
+
+        return (
+            
+            <div className="listview">
+                <input ref="pageSize" defaultValue={this.props.pageSize} onInput={this.handleInput}/>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Host Name</th>
+                            <th>Title</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th></th>
+                        </tr>
+                    {Sessions}
+                    </tbody>
+                </table>
+                    {navLinks}
+            </div>
+        )
+    }
+
+
     handleInput(e) {
         e.preventDefault();
         let pageSize = ReactDOM.findDOMNode(this.refs.pageSize).value;
@@ -38,49 +86,5 @@ export default class SessionList extends React.PureComponent {
         this.props.onNavigate(this.props.links.last.href);
     }
 
-    render() {
-        let Sessions = this.props.events.map(event =>
-            <Session key={event.entity._links.self.href}
-                  event={event}
-                  attributes={this.props.attributes}
-                  onUpdate={this.props.onUpdate}
-                  onDelete={this.props.onDelete}
-                  onJoin={this.props.onJoin}
-            />
-        );
-        let navLinks = [];
-        if("first" in this.props.links) {
-            navLinks.push(<button className='navigate' key="first" onClick={this.handleNavFirst}> &lt;&lt;</button>);
-        }
-        if("prev" in this.props.links) {
-            navLinks.push(<button className='navigate' key="prev" onClick={this.handleNavPrev}>&lt; </button>);
-        }
-        if("next" in this.props.links) {
-            navLinks.push(<button className='navigate' key="next" onClick ={this.handleNavNext}> &gt; </button>);
-        }
-        if("last" in this.props.links) {
-            navLinks.push(<button className='navigate' key="last" onClick={this.handleNavLast}> &gt;&gt; </button>);
-        }
-
-        return (
-            <div>
-                <input ref="pageSize" defaultValue={this.props.pageSize} onInput={this.handleInput}/>
-                <table>
-                    <tbody>
-                    <tr>
-                        <th>Host Name</th>
-                        <th>Title</th>
-                        <th>Start Time</th>
-                        <th>End Time</th>
-                        <th></th>
-                    </tr>
-                    {Sessions}
-                    </tbody>
-                </table>
-                <div>
-                    {navLinks}
-                </div>
-            </div>
-        )
-    }
+ 
 }

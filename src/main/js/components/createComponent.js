@@ -21,7 +21,6 @@ export default class CreateDialog extends React.Component {
     }
 
     render() {
-        // if(this.props.attributes)
         //Need backend User Model updated to reflect educational institute data point
         let inputs = this.props.attributes.map(attribute =>
             <p key={attribute}>

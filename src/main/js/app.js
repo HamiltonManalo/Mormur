@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 import when from 'when';
 import {
     BrowserRouter as Router,
     Route,
-    Link, Switch
-} from 'react-router-dom'
+    Switch
+} from 'react-router-dom';
 
 const follow = require('./follow');
 const root = '/api';
@@ -12,8 +12,9 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
 import Header from './components/headerComponent'
-import SessionView from "./components/events/sessionViewComponent";
+import SessionView from "./components/sessions/sessionViewComponent";
 import UserView from "./components/Users/userViewComponent";
+import SessionDetailsView from "./components/sessions/viewList/SessionDetailsView";
 
 
 class App extends React.Component {
@@ -25,9 +26,6 @@ class App extends React.Component {
         ///Context binding
 
     }
-
-
-
 
     componentDidMount() {
         client({
@@ -72,20 +70,20 @@ class App extends React.Component {
     render() {
         return (
             <div>
-
-                <div>
-                    <Header/>
-                {/*{Routes}*/}
-                <Switch>
-                    <Route exact path="/" component={Home}/>
-                    <Route exact path="/sessionview" component={SessionView}/>
-                    <Route exact path="/userview" component={UserView}/>
-                </Switch>
+                <Header/>
+                <div className="app">
+                    <div className="page">
+                            <Switch>
+                                <Route exact path="/" component={Home}/>
+                                <Route exact path="/sessionview" component={SessionView}/>
+                                <Route exact path="/userview" component={UserView}/>
+                                <Route path="/session/:id" component={SessionDetailsView}/>
+                            </Switch>
+                    </div>
                 </div>
             </div>
         )
     }
-
 }
 
 const Home = () => (
@@ -94,46 +92,9 @@ const Home = () => (
     </div>
 )
 
-
-const Topic = ({ match }) => (
-    <div>
-        <h3>{match.params.topicId}</h3>
-    </div>
-)
-
-const Topics = ({ match }) => (
-    <div>
-        <h2>Topics</h2>
-        <ul>
-            <li>
-                <Link to={`${match.url}/rendering`}>
-                    Rendering with React
-                </Link>
-            </li>
-            <li>
-                <Link to={`${match.url}/components`}>
-                    Components
-                </Link>
-            </li>
-            <li>
-                <Link to={`${match.url}/props-v-state`}>
-                    Props v. State
-                </Link>
-            </li>
-        </ul>
-
-        <Route path={`${match.path}/:topicId`} component={Topic}/>
-        <Route exact path={match.path} render={() => (
-            <h3>Please select a topic.</h3>
-        )}/>
-    </div>
-)
-
-
-
 ReactDOM.render(
     <Router>
     <App />
     </Router>,
-    document.getElementById('react')
+    document.getElementById('root')
 );

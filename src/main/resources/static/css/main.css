@@ -1,45 +1,72 @@
-body {
-    font-family: lato; 
-    background-color: #E5E9F2;
-}
+/* Reset */
 
-table {
-    border-collapse: collapse;
-}
-
-td, th {
-    border: 1px solid #999;
-    padding: 0.5rem;
-    text-align: left;
-}
-input.field {
-    width: 90%;
-}
-
-table {
-    border-collapse: collapse;
-}
-
-td, th {
-    border: 1px solid #999;
-    padding: 0.5rem;
-    text-align: left;
-}
-body {
-    margin: 0;
+* {
+    margin: 0; 
     padding: 0;
+    box-sizing: border-box;
 }
 
-#banner {
-    height: 60px;
+html, body {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0; 
+}
+
+body { 
+    overflow: hidden; 
+    font-size: 14px;
+    line-height: 20px;
+    font-family: lato; 
+    background-color: #E5E9F2; 
+}
+
+#root {
+    padding-top: 60px;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.app {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    max-width: 960px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.page {
+    padding: 0px 30px;
+}
+
+/* BANNER */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0; 
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: baseline;
+    z-index: 100;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.banner {
+    /* position: fixed; */
+    top: 0; 
+    left: 0; 
+    height: 60%;
     width: 100%;
     background-color: #A0C8A0;
-    top: 0;
-    z-Index: -1;
-    padding: 1px;
 }
 
-#logo {
+.logo {
     font-Size: 32px;
     margin-Top: 15px;
     margin-Left: 100px;
@@ -49,8 +76,101 @@ body {
     display: flex;
 }
 
-/*Classes for creating dialogs*/
+.navbar {
+    display: flex;
+    align-self: center;
+    justify-content: flex-start;
+    align-content: space-around;
+    align-items: center;
+    position: relative;
+}
 
+.navbar > div {
+    display: inline;
+}
+
+.navelement {
+    
+    border: 10px;
+    border-style: none;
+    padding-right: 1px;
+
+}
+.navbutton {
+    background-color: #E5E9F2;
+    padding: 0px 2px 0px 2px;
+    color: #999;
+    padding: 5px 10px 5px 10px;
+    border: 0px hidden;
+    font-family: Lato;
+    box-shadow: 2px 2px 0px 0px rgba(175, 175, 175, .30);
+
+}
+
+.navbutton:hover {
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color .50s ease;
+    color: #888;
+    background-color: #FFF;
+
+}
+
+.navbutton:focus {
+    outline: transparent;
+}
+
+/* List view styles */
+.listview {
+    padding: inherit;
+}
+
+input.field {
+    width: 90%;
+}
+
+/* List styles */
+td, th, table {
+    border: 1px solid #999;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.maincontainer {
+    background-color: #DCDCC8;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px; 
+    padding: 30px 30px;
+    margin-top: 60px;
+}
+
+.listview > table {
+    border-radius: 10px;
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+table {
+    margin: 5px;
+    box-shadow: 0 0 0 1px #666;
+    border-collapse: collapse;
+    border-style: hidden;
+    text-align: left;
+}
+
+
+/*Classes for creating dialogs*/
 .modalDialog {
     position: fixed;
     font-family: Arial, Helvetica, sans-serif;
@@ -107,8 +227,6 @@ body {
     background: #00d9ff; 
 }
 
-
-
 button.edit {
     background-color: #00A6FF;
     border: none;
@@ -147,6 +265,7 @@ button.save {
     height: 60px;
     display: inline-block;
 }
+
 button.live {
     background-color: #F95F62;
     border: none;
@@ -196,40 +315,6 @@ button.navigate {
     background-color: #F95F62;
 }
 
-#navbar {
-    right: 60px;
-    top: 10px;
-    display: flex;
-    float: right;
-    position: absolute;
-}
-
-#navbar > div {
-    display: inline;
-}
-
-.navelement {
-    border: 0px;
-    padding: 10px;
-
-}
-.navbutton {
-    background-color: #A0C8A0;
-    color: white;
-    padding: 2px;
-    border: 0px hidden;
-    font-family: Lato;
-
-}
-.navbutton:hover {
-    cursor: pointer;
-    background-color: transparent;
-
-}
-.navbutton:focus {
-    outline: transparent;
-}
-
 .createbtn {
     background-color: #13CE66;
     border: 1px;
@@ -253,15 +338,6 @@ button.navigate {
     outline: transparent;
 }
 
-
-.maincontainer {
-    background-color: #DCDCC8;
-    display: inline-flex;
-    height: 75%;
-    width: 60%;
-    left:20%;
-    position: absolute;
-}
 .test {
     color: white;
     text-decoration: none;

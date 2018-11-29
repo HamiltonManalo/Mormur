@@ -46,8 +46,7 @@ export default class UserList extends React.PureComponent {
                   attributes={this.props.attributes}
                   onUpdate={this.props.onUpdate}
                   onDelete={this.props.onDelete}
-                  onJoin={this.props.onJoin}
-            />
+                  onJoin={this.props.onJoin}/>
         );
         let navLinks = [];
         if("first" in this.props.links) {
@@ -64,7 +63,7 @@ export default class UserList extends React.PureComponent {
         }
 
         return (
-            <div>
+            <div className="listview">
                 <input ref="pageSize" defaultValue={this.props.pageSize} onInput={this.handleInput}/>
                 <table>
                     <tbody>
@@ -72,7 +71,8 @@ export default class UserList extends React.PureComponent {
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Email</th>
-                        <th>EducationalInst</th>
+                        <th></th>
+                        <th></th>
                         <th></th>
                     </tr>
                     {users}
