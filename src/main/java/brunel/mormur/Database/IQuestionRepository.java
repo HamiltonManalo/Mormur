@@ -8,6 +8,6 @@ import java.util.List;
 @Repository
 public interface IQuestionRepository extends JpaRepository<Question, Long> {
 
-      List<Question> queryQuestionsBySession_Id(long sessionId);
+      List<Question> queryQuestionsByRoom_Id(long sessionId);
 
 }

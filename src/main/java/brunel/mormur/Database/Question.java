@@ -47,7 +47,7 @@ public class Question {
     @ManyToOne(targetEntity = QARoom.class)
     @JsonManagedReference
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-    private QARoom session;
+    private QARoom room;
 
     @ElementCollection(targetClass=Integer.class)
     @Column(name = "userIDLikeList")
@@ -58,32 +58,32 @@ public class Question {
 
     private Question() {}
 
-    public Question(Long linkedQuestionIds, User participant, String questionText, ArrayList<String> hashTags, Date dateCreated, Date dateUpdated, QARoom session, List<Integer> userIDLikeList) {
+    public Question(Long linkedQuestionIds, User participant, String questionText, ArrayList<String> hashTags, Date dateCreated, Date dateUpdated, QARoom room, List<Integer> userIDLikeList) {
         this.linkedQuestionIds = linkedQuestionIds;
         this.participant = participant;
         this.questionText = questionText;
         this.hashTags = hashTags;
         this.dateCreated = dateCreated;
         this.dateUpdated = dateUpdated;
-        this.session = session;
+        this.room = room;
         this.userIDLikeList = userIDLikeList;
         this.version = 0L;
         }
-    public Question(User participant, String questionText, Date dateCreated, Date dateUpdated, QARoom session) {
+    public Question(User participant, String questionText, Date dateCreated, Date dateUpdated, QARoom room) {
         this.linkedQuestionIds = null;
         this.participant = participant;
         this.questionText = questionText;
         this.hashTags = null;
         this.dateCreated = dateCreated;
         this.dateUpdated = dateUpdated;
-        this.session = session;
+        this.room = room;
         this.userIDLikeList = null;
         this.version = 0L;
     }
 
-    public Question(QuestionDTO dto, QARoom session, User user) {
+    public Question(QuestionDTO dto, QARoom room, User user) {
         this.participant = user;
-        this.session = session;
+        this.room = room;
         this.hashTags = dto.getHashTags();
         this.questionText = dto.getQuestionText();
         this.dateCreated = new Date();

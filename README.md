@@ -1,11 +1,31 @@
 # Mormur
 A educational platform to connect experts to learners
 
-* It runs
-* It can be pinged
-* It does require some leg work to set up
+* It runs! 
+* You can ask Questions!
+* It looks prettier
 
 # Dev Guide
+
+##Setting up a new development environment
+Congratulations on joining the mormur team, you are likely a new developer and have never in your entire course, faced a task quite so monumental as setting up a project in a modern development environment. <br>
+Luckily, this guide is here to help you through that process and if you follow it you shouldn't have a hard time getting developing! So please read carefully and start here! <br> <br>
+1. Download Intelli J ultimate edition from [JetBrains](www.jetbrains.com). With a student account you get the ultimate edition for free and its an amazing, modern IDE.<br> 
+
+2. So you have your IDE installed? Great, jump to the bottom of the page and grab SourceTree, Cmder, Rapid Environment Editor and NodeJS. At minimum you need NodeJS to run the project, the other applications just make life easier.<br> 
+
+3. Once you've hooked up your preferred version control - whether that is VCS in Intelli J, Commandline Git, or SourceTree pull the repository to your PC
+
+4. In your commandline of choice navigate to your Mormur folder. The team has typically stored it in a root folder of the drive, IE C:/Mormur or D:/Mormur and then run "npm run-script watch webpack.config.js"
+
+5. Open up Intelli J and select the Mormor folder from your chosen location and import the project as a "Gradle" project. Once it starts opening you should see a bar at the bottom of the screen showing dependencies downloading. You're almost done! 
+
+6. Intelli J will ask you a few questions once it finishes loading data and you should probably answer yes! "Do you want annotation processing?" yes! 
+
+You should now be ready to start coding! check our trello board and jump on a story! 
+
+####Some new dev tips! 
+* Pull from github everyday and merge master into your branch. On SourceTree this can be achieved by switching to master and pulling, then hop back onto your branch, right click on master and choose to 
 
 ### Source Control
 Your parents have probably never spoken to you about the vital need to practice strong source control. Your friends may say "**MERGE TO MAIN** man, its cool"
@@ -41,6 +61,7 @@ In order to transpile React into vanilla JS A webpack build needs to be run via 
  `  [0] multi main 40 bytes {0} [built]` <br>
     `+ 285 hidden modules` <br>
     Alternatively you may run the 'npx webpack' command to do a single run of the react build. 
+    
 #### Topics to know
 * Promises - Async programming in JS
   * These are used in JS to handle network requests

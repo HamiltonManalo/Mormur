@@ -22,7 +22,7 @@ export default class SessionDetailsView extends React.PureComponent {
                       hashtags={question.hashtags}
                       answer={false}/>
         );
-        // console.log("session questions")
+        // console.log("room questions")
         // console.log(sessionQuestions)
         return(
             <div className="maincontainer listview">
@@ -49,7 +49,7 @@ export default class SessionDetailsView extends React.PureComponent {
     }
     componentDidMount() {
 
-        fetch(`http://localhost:8080/api/sessionDetailses/${this.props.match.params.id}/questions`).then(results =>{
+        fetch(`../../api/qARooms/${this.props.match.params.id}/questions`).then(results =>{
             return results.json();
         }).then(data => {
             let questionsArray = data._embedded.questions.map(question => {
@@ -66,7 +66,7 @@ export default class SessionDetailsView extends React.PureComponent {
             // console.dir(questionsArray);
         });
         if(!this.props.location.entity) {
-            fetch(`http://localhost:8080/api/sessionDetailses/${this.props.match.params.id}`).then(results => results.json()).then(data => {
+            fetch(`../../api/qARooms/${this.props.match.params.id}`).then(results => results.json()).then(data => {
                 this.setState({title: data.title})
             })
         }
@@ -113,7 +113,7 @@ export default class SessionDetailsView extends React.PureComponent {
             redirect: "follow",
             body: JSON.stringify(bodyObject)
         }
-        fetch("http://localhost:8080/api/session/questions", options)
+        fetch("/api/qARooms/questions", options)
         .then(response => response.json())
         .then(data => {setInterval(() => {}, 250)});
     }

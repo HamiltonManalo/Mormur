@@ -56,7 +56,7 @@ public class QARoomControllerTests {
         long sessionIdToFindby = 3;
         System.out.println("HEERRREE ");
         q = null;
-        q = repository.queryQuestionsBySession_Id(sessionIdToFindby);
+        q = repository.queryQuestionsByRoom_Id(sessionIdToFindby);
         for(Question x : q) {
             System.out.println("Printing questions found " + x.getQuestionText());
         }
