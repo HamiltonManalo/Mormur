@@ -24,5 +24,5 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/session/**")
-    public String QARoom() { return "index"; }
+    public String QARoom    () { return "index"; }
 }
