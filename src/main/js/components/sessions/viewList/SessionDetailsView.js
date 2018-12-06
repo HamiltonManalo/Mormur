@@ -103,7 +103,7 @@ export default class SessionDetailsView extends React.PureComponent {
             participantId: 1,
             questionText: text,
             hashTags: hashtags,
-            sessionId: this.props.match.params.id
+            QARoomId: this.props.match.params.id
         }
         let options = {
             method: "POST",
