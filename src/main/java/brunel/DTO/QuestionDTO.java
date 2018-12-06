@@ -14,5 +14,5 @@ public class QuestionDTO {
 
     private ArrayList<String> hashTags;
 
-    private Long QARoomId;
+    private Long qaRoomId;
 }

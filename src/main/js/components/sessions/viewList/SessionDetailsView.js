@@ -103,8 +103,9 @@ export default class SessionDetailsView extends React.PureComponent {
             participantId: 1,
             questionText: text,
             hashTags: hashtags,
-            QARoomId: this.props.match.params.id
+            qaRoomId: Number(this.props.match.params.id),
         }
+
         let options = {
             method: "POST",
             headers: {
@@ -113,6 +114,7 @@ export default class SessionDetailsView extends React.PureComponent {
             redirect: "follow",
             body: JSON.stringify(bodyObject)
         }
+        
         fetch("/api/qARooms/questions", options)
         .then(response => response.json())
         .then(data => {setInterval(() => {}, 250)});

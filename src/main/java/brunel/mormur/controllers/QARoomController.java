@@ -24,14 +24,14 @@ public class QARoomController {
         //Query user and QARoom to link the SQL relationships. Optional is a Java data type (wrapper) that can hold a value or null which
         //Requires you to use the .get() or "OrElse" method to get the object.
         Optional<User> user = userRepository.findById(question.getParticipantId());
-        Optional<QARoom> room = roomRepository.findById(question.getQARoomId());
+        Optional<QARoom> room = roomRepository.findById(question.getQaRoomId());
 
         //Validate data was received and print a message if it wasn't
         if(!user.isPresent()) {
-            System.out.println("User for new question in Room " + question.getQARoomId() + " with userID " + question.getParticipantId() + " does not exist");
+            System.out.println("User for new question in Room " + question.getQaRoomId() + " with userID " + question.getParticipantId() + " does not exist");
         }
         if(!room.isPresent()) {
-            System.out.println("Room " + question.getQARoomId() + " Does not exist for question submitted by userId " + question.getParticipantId());
+            System.out.println("Room " + question.getQaRoomId() + " Does not exist for question submitted by userId " + question.getParticipantId());
         }
 
         //Custom constructor was made to make this easier. Make new question and create relationships
