@@ -33,7 +33,7 @@ public class User {
     @JsonIgnore
     private String password;
 
-    @Temporal(value = TemporalType.TIMESTAMP)
+//    @Temporal(value = TemporalType.TIMESTAMP)
     @Column(name = "Joined")
     private LocalDateTime joined;
 
@@ -46,7 +46,7 @@ public class User {
     @Column(name = "ModerationFlag")
     private Boolean moderationFlag;
 
-    @Temporal(value = TemporalType.TIMESTAMP)
+//    @Temporal(value = TemporalType.TIMESTAMP)
     @Column(name = "LastLogin")
     private LocalDateTime lastLogin;
 

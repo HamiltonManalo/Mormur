@@ -18,7 +18,7 @@ public class QARoomController {
         this.questionRepository = questionRepository;
     }
 
-    @PostMapping("/api/session/questions")
+    @PostMapping("/api/qARooms/questions")
     public QuestionDTO addNewQuestion(@RequestBody QuestionDTO question)  {
 
         //Query user and QARoom to link the SQL relationships. Optional is a Java data type (wrapper) that can hold a value or null which
